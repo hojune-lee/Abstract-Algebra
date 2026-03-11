@@ -493,4 +493,31 @@ The order of $\sigma \in S_n$ equals the least common multiple of the lengths of
 
 \end{tcolorbox}
 
+\newpage 
+
+\section{Matrix Groups}
+
+Actually, field is our later interests. However, to understand group theory, very powerful tool is understanding linear algebra. 
+So we alert matrix groups, whose coefficients come from fields. For sake of goal, let's describe what the fields are. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Fields]
+
+A \textit{field} is a set $F$ with two \textbf{commutative} binary operations $+, \cdot$ on $F$ such that 
+$(F, +)$ forms an abelian group with identity $0$, and $(F\setminus \{0\}, \cdot)$ also forms an abelian group with identity $1$, 
+and following \textit{distributive law} holds: 
+\[a \cdot (b + c) = (a \cdot b) + (a \cdot c), \forall a,b,c \in F\]
+And we denote $F^{\times} = F \setminus \{0\}$ 
+
+\end{tcolorbox}
+
+Actually our interests are groups of matrices over $F$. Let's define following important group here. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Matrix groups($GL_n(F)$)]
+
+\[GL_n(F) = \{A | A \in Mat_{n\times n}(F), \det(A) \neq 0, \text{i.e., invertible}\}\]
+Let binary operation $\cdot$ denote matrix multiplication. It is easy to see that $(GL_n(F), \cdot)$ is a group. 
+It called \textit{general linear group of degree $n$}.  
+
+\end{tcolorbox}
+
 \end{document}
