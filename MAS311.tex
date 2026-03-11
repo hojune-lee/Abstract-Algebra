@@ -544,4 +544,49 @@ Here, we define binary operation $\cdot$ as follows;
 
 (I'll add more intuition about this group after I understand well.)
 
+\newpage 
+
+\section{Homomorphisms and Isomorphisms}
+
+By defining groups, we abstracted many mathematical structures into group theories. 
+Then now, we can imagine the maps between them and what the \lq look the same group' is.
+First, let's define the structure-preserved maps on groups. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Homomorphism]
+
+Let $(G, \star), (H, \diamond)$ be groups. A map $\varphi : G \rightarrow H$ such that 
+\[\forall x, y \in G, \varphi(x \star y) = \varphi(x) \diamond \varphi(y)\]
+is called \textit{homomorphism} from $G$ to $H$. 
+
+\end{tcolorbox}
+
+Then now, we define more strong (and more precise to our goal) concepts: Two groups are conceptually equal. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Isomorphism]
+
+Let the map $\varphi : G \rightarrow H$ be an homomorphism from $G$ to $H$. We call that $\varphi$ is an \textit{isomorphism} when $\varphi$ is a bijection. 
+If such isomorphism exists, then we denote $G \cong H$ and say that $G$ and $H$ are \textit{isomorphic}.  
+
+\end{tcolorbox}
+
+On the high level, $G \cong H$ if there exists bijective structure-preserve map $\varphi$. And if $G \cong H$, they are 
+exactly same group except that how we write the elements and operation. 
+
+One of the most familar example is that $(\BR, +) \cong (\BR^+, \times)$. Such isomorphism is explicitly given as 
+$\varphi(x) = e^x$. It is bijective since $\varphi^{-1}(a) = \log a$. And clearly homomorphism, since $e^{x+y} = e^x e^y$. 
+So, both are exactly same structure. 
+
+Following fact is quite not obvious: 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=First isomorphim classes]
+    
+Any non-abelian group of order 6 is isomorphic to $S_3$. Further, every group whose order is $6$ 
+is isomorphic to one of two groups: $S_3, \BZ / 6\BZ$ and so, $S_3 \ncong \BZ / 6\BZ$. 
+
+\end{tcolorbox}
+
+One of main goal in group theory is that learn skills to prove this kind of statements. 
+
+
+
 \end{document}
