@@ -1,0 +1,496 @@
+
+\documentclass[12pt, a4paper, openany, twoside]{book}
+\usepackage[left=1in,right=1in,bottom=0.5in,top=0.8in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{epstopdf}
+\usepackage[pdfpagelabels,hyperindex]{hyperref}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz-cd}
+\usepackage{comment}
+\usepackage{mathpartir}
+
+\linespread{1.3} 
+
+\hypersetup{
+pdftitle={.},
+pdfauthor={Hojune Lee},
+}
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{ppty}[thm]{Property}
+\newtheorem{ppties}[thm]{Properties}
+\newtheorem{axiom}[thm]{Axiom}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{prob}[thm]{Problem}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{limit}[thm]{Limitation}
+
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\newenvironment{thmbox}[1][]{\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title={#1}]}{\end{tcolorbox}}
+
+
+% newcommand bb
+    \newcommand{\BA}{{\mathbb {A}}} \newcommand{\BB}{{\mathbb {B}}}
+    \newcommand{\BC}{{\mathbb {C}}} \newcommand{\BD}{{\mathbb {D}}}
+    \newcommand{\BE}{{\mathbb {E}}} \newcommand{\BF}{{\mathbb {F}}}
+    \newcommand{\BG}{{\mathbb {G}}} \newcommand{\BH}{{\mathbb {H}}}
+    \newcommand{\BI}{{\mathbb {I}}} \newcommand{\BJ}{{\mathbb {J}}}
+    \newcommand{\BK}{{\mathbb {U}}} \newcommand{\BL}{{\mathbb {L}}}
+    \newcommand{\BM}{{\mathbb {M}}} \newcommand{\BN}{{\mathbb {N}}}
+    \newcommand{\BO}{{\mathbb {O}}} \newcommand{\BP}{{\mathbb {P}}}
+    \newcommand{\BQ}{{\mathbb {Q}}} \newcommand{\BR}{{\mathbb {R}}}
+    \newcommand{\BS}{{\mathbb {S}}} \newcommand{\BT}{{\mathbb {T}}}
+    \newcommand{\BU}{{\mathbb {U}}} \newcommand{\BV}{{\mathbb {V}}}
+    \newcommand{\BW}{{\mathbb {W}}} \newcommand{\BX}{{\mathbb {X}}}
+    \newcommand{\BY}{{\mathbb {Y}}} \newcommand{\BZ}{{\mathbb {Z}}}
+
+% newcommand  scr
+    \newcommand{\sA}{{\mathscr {A}}} \newcommand{\sB}{{\mathscr {B}}}
+    \newcommand{\sC}{{\mathscr {C}}} \newcommand{\sD}{{\mathscr {D}}}
+    \newcommand{\sE}{{\mathscr {E}}} \newcommand{\sF}{{\mathscr {F}}}
+    \newcommand{\sG}{{\mathscr {G}}} \newcommand{\sH}{{\mathscr {H}}}
+    \newcommand{\sI}{{\mathscr {I}}} \newcommand{\sJ}{{\mathscr {J}}}
+    \newcommand{\sK}{{\mathscr {K}}} \newcommand{\sL}{{\mathscr {L}}}
+    \newcommand{\sN}{{\mathscr {N}}} \newcommand{\sM}{{\mathscr {M}}}
+    \newcommand{\sO}{{\mathscr {O}}} \newcommand{\sP}{{\mathscr {P}}}
+    \newcommand{\sQ}{{\mathscr {Q}}} \newcommand{\sR}{{\mathscr {R}}}
+    \newcommand{\sS}{{\mathscr {S}}} \newcommand{\sT}{{\mathscr {T}}}
+    \newcommand{\sU}{{\mathscr {U}}} \newcommand{\sV}{{\mathscr {V}}}
+    \newcommand{\sW}{{\mathscr {W}}} \newcommand{\sX}{{\mathscr {X}}}
+    \newcommand{\sY}{{\mathscr {Y}}} \newcommand{\sZ}{{\mathscr {Z}}}
+
+
+% newcommand cal
+    \newcommand{\CA}{{\mathcal {A}}} \newcommand{\CB}{{\mathcal {B}}}
+    \newcommand{\CC}{{\mathcal {C}}} \newcommand{\CD}{{\mathcal {D}}}
+    \newcommand{\CE}{{\mathcal {E}}} \newcommand{\CF}{{\mathcal {F}}}
+    \newcommand{\CG}{{\mathcal {G}}} \newcommand{\CH}{{\mathcal {H}}}
+    \newcommand{\CI}{{\mathcal {I}}} \newcommand{\CJ}{{\mathcal {J}}}
+    \newcommand{\CK}{{\mathcal {K}}} \newcommand{\CL}{{\mathcal {L}}}
+    \newcommand{\CM}{{\mathcal {M}}} \newcommand{\CN}{{\mathcal {N}}}
+    \newcommand{\CO}{{\mathcal {O}}} \newcommand{\CP}{{\mathcal {P}}}
+    \newcommand{\CQ}{{\mathcal {Q}}} \newcommand{\CR}{{\mathcal {R}}}
+    \newcommand{\CS}{{\mathcal {S}}} \newcommand{\CT}{{\mathcal {T}}}
+    \newcommand{\CU}{{\mathcal {U}}} \newcommand{\CV}{{\mathcal {V}}}
+    \newcommand{\CW}{{\mathcal {W}}} \newcommand{\CX}{{\mathcal {X}}}
+    \newcommand{\CY}{{\mathcal {Y}}} \newcommand{\CZ}{{\mathcal {Z}}}
+
+    % newcommand frak
+     \newcommand{\fa}{{\mathfrak{a}}}  \newcommand{\fb}{{\mathfrak{b}}}
+     \newcommand{\fc}{{\mathfrak{c}}}  \newcommand{\fd}{{\mathfrak{d}}}
+     \newcommand{\fe}{{\mathfrak{e}}}  \newcommand{\ff}{{\mathfrak{f}}}
+     \newcommand{\fg}{{\mathfrak{g}}}  \newcommand{\fh}{{\mathfrak{h}}}
+     \newcommand{\fii}{{\mathfrak{i}}}  \newcommand{\fj}{{\mathfrak{j}}}
+     \newcommand{\fk}{{\mathfrak{m}}}  \newcommand{\fl}{{\mathfrak{l}}}
+     \newcommand{\fm}{{\mathfrak{m}}}  \newcommand{\fn}{{\mathfrak{n}}}
+     \newcommand{\fo}{{\mathfrak{o}}}  \newcommand{\fp}{{\mathfrak{p}}}
+     \newcommand{\fq}{{\mathfrak{q}}}  \newcommand{\fr}{{\mathfrak{r}}}
+     \newcommand{\fs}{{\mathfrak{s}}}  \newcommand{\ft}{{\mathfrak{t}}}
+     \newcommand{\fu}{{\mathfrak{u}}}  \newcommand{\fv}{{\mathfrak{v}}}
+     \newcommand{\fw}{{\mathfrak{w}}}  \newcommand{\fx}{{\mathfrak{x}}}
+     \newcommand{\fy}{{\mathfrak{y}}}  \newcommand{\fz}{{\mathfrak{z}}}
+
+    \newcommand{\fA}{{\mathfrak{A}}}  \newcommand{\fB}{{\mathfrak{B}}}
+     \newcommand{\fC}{{\mathfrak{C}}}  \newcommand{\fD}{{\mathfrak{D}}}
+     \newcommand{\fE}{{\mathfrak{E}}}  \newcommand{\fF}{{\mathfrak{F}}}
+     \newcommand{\fG}{{\mathfrak{G}}}  \newcommand{\fH}{{\mathfrak{H}}}
+     \newcommand{\fI}{{\mathfrak{I}}}  \newcommand{\fJ}{{\mathfrak{J}}}
+     \newcommand{\fK}{{\mathfrak{K}}}  \newcommand{\fL}{{\mathfrak{L}}}
+     \newcommand{\fM}{{\mathfrak{M}}}  \newcommand{\fN}{{\mathfrak{N}}}
+     \newcommand{\fO}{{\mathfrak{O}}}  \newcommand{\fP}{{\mathfrak{P}}}
+     \newcommand{\fQ}{{\mathfrak{Q}}}  \newcommand{\fR}{{\mathfrak{R}}}
+     \newcommand{\fS}{{\mathfrak{S}}}  \newcommand{\fT}{{\mathfrak{T}}}
+     \newcommand{\fU}{{\mathfrak{U}}}  \newcommand{\fV}{{\mathfrak{V}}}
+     \newcommand{\fW}{{\mathfrak{W}}}  \newcommand{\fX}{{\mathfrak{X}}}
+     \newcommand{\fY}{{\mathfrak{Y}}}  \newcommand{\fZ}{{\mathfrak{Z}}}
+
+
+
+ % newcommand :rm
+     \newcommand{\RA}{{\mathrm {A}}} \newcommand{\RB}{{\mathrm {B}}}
+    \newcommand{\RC}{{\mathrm {C}}} \newcommand{\RD}{{\mathrm {D}}}
+    \newcommand{\RE}{{\mathrm {E}}} \newcommand{\RF}{{\mathrm {F}}}
+    \newcommand{\RG}{{\mathrm {G}}} \newcommand{\RH}{{\mathrm {H}}}
+    \newcommand{\RI}{{\mathrm {I}}} \newcommand{\RJ}{{\mathrm {J}}}
+    \newcommand{\RK}{{\mathrm {K}}} \newcommand{\RL}{{\mathrm {L}}}
+    \newcommand{\RM}{{\mathrm {M}}} \newcommand{\RN}{{\mathrm {N}}}
+    \newcommand{\RO}{{\mathrm {O}}} \newcommand{\RP}{{\mathrm {P}}}
+    \newcommand{\RQ}{{\mathrm {Q}}} \newcommand{\RR}{{\mathrm {R}}}
+    \newcommand{\RS}{{\mathrm {S}}} \newcommand{\RT}{{\mathrm {T}}}
+    \newcommand{\RU}{{\mathrm {U}}} \newcommand{\RV}{{\mathrm {V}}}
+    \newcommand{\RW}{{\mathrm {W}}} \newcommand{\RX}{{\mathrm {X}}}
+    \newcommand{\RY}{{\mathrm {Y}}} \newcommand{\RZ}{{\mathrm {Z}}}
+
+    \newcommand{\Ad}{{\mathrm{Ad}}} \newcommand{\Aut}{{\mathrm{Aut}}}
+    \newcommand{\Br}{{\mathrm{Br}}} \newcommand{\Ch}{{\mathrm{Ch}}}
+    \newcommand{\cod}{{\mathrm{cod}}} \newcommand{\cont}{{\mathrm{cont}}}
+    \newcommand{\cl}{{\mathrm{cl}}}   \newcommand{\Cl}{{\mathrm{Cl}}}
+    \newcommand{\disc}{{\mathrm{disc}}}\newcommand{\Eis}{{\mathrm{Eis}}}
+    \newcommand{\Div}{{\mathrm{Div}}} \renewcommand{\div}{{\mathrm{div}}}
+    \newcommand{\End}{{\mathrm{End}}} \newcommand{\Frob}{{\mathrm{Frob}}}
+    \newcommand{\Gal}{{\mathrm{Gal}}} \newcommand{\GL}{{\mathrm{GL}}}
+    \newcommand{\Hom}{{\mathrm{Hom}}} \renewcommand{\Im}{{\mathrm{Im}}}
+    \newcommand{\Ind}{{\mathrm{Ind}}} \newcommand{\ind}{{\mathrm{ind}}}
+    \newcommand{\inv}{{\mathrm{inv}}}
+    \newcommand{\Isom}{{\mathrm{Isom}}} \newcommand{\Jac}{{\mathrm{Jac}}}
+    \newcommand{\ad}{{\mathrm{ad}}}  \newcommand{\Tr}{{\mathrm{Tr}}}
+    \newcommand{\Ker}{{\mathrm{Ker}}} \newcommand{\Ros}{{\mathrm{Ros}}}
+    \newcommand{\Lie}{{\mathrm{Lie}}} \newcommand{\Hol}{{\mathrm{Hol}}}
+
+    \newcommand{\cyc}{{\mathrm{cyc}}}\newcommand{\id}{{\mathrm{id}}}
+    \newcommand{\new}{{\mathrm{new}}} \newcommand{\NS}{{\mathrm{NS}}}
+    \newcommand{\ord}{{\mathrm{ord}}} \newcommand{\rank}{{\mathrm{rank}}}
+    \newcommand{\PGL}{{\mathrm{PGL}}} \newcommand{\Pic}{\mathrm{Pic}}
+    \newcommand{\cond}{\mathrm{cond}} \newcommand{\Is}{{\mathrm{Is}}}
+    \renewcommand{\Re}{{\mathrm{Re}}} \newcommand{\reg}{{\mathrm{reg}}}
+    \newcommand{\Res}{{\mathrm{Res}}} \newcommand{\Sel}{{\mathrm{Sel}}}
+    \newcommand{\RTr}{{\mathrm{Tr}}} \newcommand{\alg}{{\mathrm{alg}}}
+    \newcommand{\PSL}{{\mathrm{PSL}}}
+
+\newcommand{\coker}{{\mathrm{coker}}}
+\newcommand{\val}{{\mathrm{val}}} \newcommand{\sign}{{\mathrm{sign}}}
+\newcommand{\mult}{{\mathrm{mult}}} \newcommand{\Vol}{{\mathrm{Vol}}}
+\newcommand{\Meas}{{\mathrm{Meas}}}\renewcommand{\mod}{\ \mathrm{mod}\ }
+\newcommand{\Ann}{\mathrm{Ann}}
+\newcommand{\Tor}{\mathrm{Tor}}
+\newcommand{\Supp}{\mathrm{Supp}}\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Coker}{\mathrm{Coker}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\Irr}{\mathrm{Irr}}\newcommand{\Inf}{\mathrm{Inf}}\newcommand{\Sup}{\mathrm{Sup}}
+\newcommand{\rk}{\mathrm{rk}}\newcommand{\Fil}{\mathrm{Fil}}
+\newcommand{\Sim}{{\mathrm{Sim}}} \newcommand{\SL}{{\mathrm{SL}}}
+\newcommand{\Spec}{{\mathrm{Spec}}} \newcommand{\SO}{{\mathrm{SO}}}
+\newcommand{\SU}{{\mathrm{SU}}} \newcommand{\Sym}{{\mathrm{Sym}}}
+\newcommand{\sgn}{{\mathrm{sgn}}} \newcommand{\tr}{{\mathrm{tr}}}
+\newcommand{\tor}{{\mathrm{tor}}}  \newcommand{\ur}{{\mathrm{ur}}}
+\newcommand{\vol}{{\mathrm{vol}}}  \newcommand{\ab}{{\mathrm{ab}}}
+\newcommand{\Sh}{{\mathrm{Sh}}} \newcommand{\Ell}{{\mathrm{Ell}}}
+\newcommand{\Char}{{\mathrm{Char}}}\newcommand{\Tate}{{\mathrm{Tate}}}
+\newcommand{\corank}{{\mathrm{corank}}} \newcommand{\Cond}{{\mathrm{Cond}}}
+\newcommand{\Inn}{{\mathrm{Inn}}} \newcommand{\Spf}{{\mathrm{Spf}}}
+\newcommand{\Mat}{{\mathrm{Mat}}}
+
+
+    \font\cyr=wncyr10  \newcommand{\Sha}{\hbox{\cyr X}}
+    \newcommand{\wt}{\widetilde} \newcommand{\wh}{\widehat} \newcommand{\ck}{\check}
+    \newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
+    \newcommand{\pair}[1]{\langle {#1} \rangle}
+    \newcommand{\wpair}[1]{\left\{{#1}\right\}}
+    \newcommand{\intn}[1]{\left( {#1} \right)}
+    \newcommand{\norm}[1]{\|{#1}\|}
+    \newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+    \newcommand{\ds}{\displaystyle}
+    \newcommand{\ov}{\overline}
+    \newcommand{\Gros}{Gr\"{o}ssencharaktere}
+    \newcommand{\incl}{\hookrightarrow}
+    \newcommand{\lra}{\longrightarrow}
+     \newcommand{\ra}{\rightarrow}
+    \newcommand{\imp}{\Longrightarrow}
+    \newcommand{\lto}{\longmapsto}
+    \newcommand{\bs}{\backslash}
+    \newcommand{\nequiv}{\equiv\hspace{-7.8pt}/}
+    \theoremstyle{plain}
+
+
+\definecolor{energy}{RGB}{114,0,172}
+\definecolor{freq}{RGB}{45,177,93}
+\definecolor{spin}{RGB}{251,0,29}
+\definecolor{signal}{RGB}{203,23,206}
+\definecolor{circle}{RGB}{217,86,16}
+\definecolor{average}{RGB}{203,23,206}
+\newcommand{\K}{\operatornamewithlimits{K}}
+\colorlet{shadecolor}{gray!20}
+\pgfplotsset{compat=1.9}
+\def\N{10}
+\def\M{4}
+\usepgflibrary{fpu}
+
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+
+
+\makeatletter
+\let\c@equation\c@thm
+\raggedbottom
+\makeatother
+\numberwithin{equation}{section}
+%--------Meta Data: Fill in your info------
+\author{Hojune Lee, 20210541}
+
+\title{Abstract Algebra}
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{9cm}
+            
+        \Huge
+        \textbf{Abstract Algebra}
+    
+        \vspace{1cm}
+        \large
+        Summary note of Dummit \& Foote's Abstract Algebra
+        \vspace{3cm}
+        
+        \LARGE
+        \textbf{Hojune Lee}
+            
+        \vspace{8cm}
+            
+        \normalsize
+        \textbf{School of Computing, KAIST}\\  
+    \end{center}
+\end{titlepage}
+
+\hypersetup{linkcolor=black}
+\tableofcontents
+\hypersetup{linkcolor=blue}
+
+\newpage 
+
+\chapter{Introduction to Groups}
+
+\section{Groups}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Binary operation]
+
+\begin{enumerate}
+    \item A \textit{binary operation} $\star$ on a set $G$ is a map $\star : G \times G \rightarrow G$. We denote $\forall a, b \in G, \star(a, b)$ by $a \star b$. 
+    \item A binary operation $\star$ on a set $G$ is \textit{associative} if \[\forall a, b, c \in G, a \star (b \star c) = (a \star b) \star c\]
+    \item A binary operation $\star$ on a set $G$ is \textit{commutative} if \[\forall a, b \in G, a \star b = b \star a\]
+    \item For a set $G$, $H \subseteq G$ and a binary operation $\star$ on $G$, if the restriction of $\star$ to $H$ is a binary operation on $H$, $H$ is said to be \textit{closed} under $\star$. 
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Group]
+
+\begin{enumerate}
+    \item A \textit{group} is an ordered pair $(G, \star)$ where $G$ is a set and $\star$ is a binary operation on $G$, which satisfies 
+    \begin{enumerate}
+        \item $\star$ is associative.
+        \item $\exists~ e \in G, \forall a \in G, a = a \star e = e \star a$
+        \item For $e$ of (b), $\forall a \in G, \exists a^{-1} \in G, a \star a^{-1} = a^{-1} \star a = e$
+    \end{enumerate}
+    \item Group $(G, \star)$ is called \textit{abelian} when $\star$ is also commutative. 
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Direct product,breakable]
+Let $(A, \star)$ and $(B, \diamond)$ are groups. We can form group $A \times B$ called \textit{direct product} of $A$ and $B$ by
+\[A \times B = \{(a, b) | a \in A, b \in B\}\]
+with following binary operation $\cdot$ : 
+\[(a_1, b_1) \cdot (a_2, b_2) = (a_1 \star a_2, b_1 \diamond b_2)\]
+
+Here, one can claim that $(A \times B, \cdot)$ is a group. The associativity of $\cdot$ is clear. 
+And let's denote the identity of $(A, \star), (B, \diamond)$ by $e_1, e_2$ respectively. We can easily check that $(e_1, e_2)$ is identity of $(A\times B, \cdot)$
+and $(e_1, e_2) \in A \times B$. This holds group axiom (2). Finally, $\forall a \in A, b \in B$, we can compose $(a^{-1}, b^{-1})$. Then by the definition of $\cdot$, 
+$(a, b) \cdot (a^{-1}, b^{-1}) = (a^{-1}, b^{-1}) = (e_1, e_2)$ holds. So, $(a, b)^{-1} = (a^{-1}, b^{-1})$, holds group axiom (3). 
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Propositions on Groups, breakable]
+Let $(G, \star)$ be any group. Following always holds. 
+\begin{enumerate}
+    \item The identity of $G$ is unique.
+    \item $\forall a \in G$, $a^{-1}$ is uniquely determined. 
+    \item $\forall a \in G, (a^{-1})^{-1} = a$
+    \item $\forall a, b \in G, (a \star b)^{-1} = b^{-1} \star a^{-1}$
+    \item $\forall a_1, \cdots, a_n \in G$ the value of $a_1 \star a_2 \star \cdots \star a_n$ is independent of how the expression is bracketed.
+\end{enumerate}
+
+All the proofs are easy. 
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Cancellation Laws hold in $G$]
+\begin{enumerate}
+    \item $au = av \implies u = v$
+    \item $ub = vb \implies u = v$
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Group order]
+
+For any group $G$ and $x \in G$, let's say the \textit{order} of $x$ (denote by $|x|$) by 
+\[|x| = \underset{n \in \BN}{\text{argmin}}~\{ x^{n} = 1\}\]
+If such $n$ does not exists, $|x| = \infty$. 
+
+\end{tcolorbox}
+
+\newpage 
+
+\section{Dihedral Groups}
+
+The definition of \textit{dihedral group} is quite abstracted. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Dihedral Groups]
+One natural, and important structure is symmetries of geometric objects. For $n \in \BZ^{+}, n \geq 3$, the \textit{dihedral group} $D_{2n}$ 
+be the set of symmetries on regular $n$-gon, where a symmetry is any rigid motion. 
+\end{tcolorbox}
+
+Now let's imagine that we label each vertices of such $n$-gon as $\{1, 2, \cdots, n\}$. 
+Then, each symmetries can be viewed a permutation $\sigma$ on $\{1, 2, \cdots, n\}$. 
+Then now we can formulate the group $D_{2n}$ with composition $\circ$. Let $s, t \in D_{2n}$ be two symmetries. 
+Composition $s\circ t = st$, is defined by apply $t$ and then $s$. 
+
+One interesting thing is that, $|D_{2n}| = 2n$. It can be proved. In every symmetry, vertex 1 and 2 are adjacent. 
+So, our job is clear. Choose the position of vertex 1. ($n$ cases) And then, choose the position of vertex 2 which adjacent with vertex 1. (2 cases) So, we have $2n$ cases total, implies that $|D_{2n}| = 2n$. 
+Or, we can enumerate what such $2n$ symmetries are. $n$ symmetries are came from rotation by $2\pi i / n, i \in \{0, \cdots, n-1\}$. Remaining $n$ symmetries are came from flip(reflection), with $n$ axis of $n$-gon. 
+
+From now on, we'll fix our setting to understand $D_{2n}$ further. Fix a regular $n$-gon centered at the origin on $\BR^2$ and label the vertices in clockwise manner, from $1$ to $n$. 
+And denote $r \in D_{2n}$ be a $\frac{2\pi}{n}$ rotation. And denote $s \in D_{2n}$ be a reflection via axis containing vertex 1. We can observe following propositions. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Propositions on $D_{2n}$]
+\begin{enumerate}
+    \item $1, r, r^2, \cdots, r^{n-1}$ are distinct, and $|r| = n$
+    \item $|s| = 2$
+    \item $s \neq r^{i}$ for any $i \in \{0, 1, \cdots, n-1\}$
+    \item $sr^i \neq sr^j$ for all $0 \leq i, j \leq n-1$ with $i \neq j$. Consequence of this is that, 
+    \[D_{2n} = \{1, r, r^2, \cdots, r^{n-1}, s, sr, sr^2, \cdots, sr^{n-1}\}\]
+    \item $rs = sr^{-1}$, So $D_{2n}$ is \textit{non-abelian}
+    \item $r^i s = sr^{-i}, 0 \leq i \leq n$
+\end{enumerate}
+
+Everythings are not hard to prove. 
+
+\end{tcolorbox}
+
+Now, let's discussion about \textit{generators} and \textit{relations}. As we can see in above study, 
+to represent all elements of $D_{2n}$, two element $r, s$ are sufficient. Similarly, we introduce the notions of \textit{generators} and \textit{relations} for arbitrary groups. 
+Although we recall both notions later, let's bring the notions of this basis-like things. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Generator of $G$]
+
+For a group $G$, $S \subset G$ is called a set of \textit{generators} if every element of $G$ can be written 
+as a (finite) product of elements of $S$ and their inverses. Also we write $G = \langle S \rangle$ and say that 
+$G$ is \textit{generated by} $S$. 
+
+\end{tcolorbox}
+
+For clear understanding, $\BZ = \langle 1 \rangle, D_{2n} = \langle r, s \rangle$. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Relation in $G$]
+
+Any equations in group $G$ that the generators of $G$ satisfy are called \textit{relations} in $G$.
+
+\end{tcolorbox}
+
+For example, we have 3 relations in $D_{2n}$ : 
+\[r^n = 1, s^2 = 1, rs = sr^{-1}\]
+And any other relation between elements of $D_{2n}$ can be derived from these three. (later)
+By the way, this notion enable us to represent group in simple way. (Only few elements and equations)
+This leads us to following definition. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Presentation of $G$]
+
+Let's imagine that a group $G$ is generated by $S \subseteq G$ and there are some collection of relations $R_1, \cdots, R_m$ such that 
+any relation among the $S$ is consequence of them. In this case, we write 
+\[G = \langle S | R_1, R_2, \cdots, R_m \rangle\]
+and call this by \textit{presentation} of $G$. 
+
+\end{tcolorbox}
+
+In this step, this notion is quite verbose. So, we'll discuss it later of this book. 
+
+\newpage 
+
+\section{Symmetric Groups}
+
+Now let's move on to next step. Actually our goal is abstraction of natural notions. In this section, we'll 
+derive set of all bijections(or permutations). 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Symmetric Group on $\Omega$]
+
+Let $\Omega$ be any set. Then define $S_\Omega$ by the set of all bijections from $\Omega$ to $\Omega$. 
+We can also understand $S_\Omega$ is set of all permutations of $\Omega$. For the binary operation $\circ$ which is function composition, 
+$(S_\Omega, \circ)$ is a group. (Check!) We call $(S_\Omega, \circ)$ by \textit{symmetric group} on $\Omega$. 
+
+\end{tcolorbox}
+
+One natural consideration is that, when $\Omega = \{1, 2, \cdots, n\}$. In this case, we denote the symmetric group by $(S_n, \circ)$ 
+and call it \textit{symmetric group of degree $n$}. We already know that $|S_n| = n!$ 
+
+Let's move on. Can we find some interesting observations from each $\sigma \in S_n$? 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Cycle decomposition]
+
+A \textit{cycle} is a string of integers represents the element of $S_n$ which cyclically permutes these integers and fixed all others. For example, a cycle 
+$(a_1, \cdots, a_m) \in S_n$ is the permutation such that sends $a_1 \mapsto a_2, \cdots, a_{m-1} \mapsto a_m, a_m \mapsto a_1$ 
+
+In general, we can decompose for each $\sigma \in S_n$ into $k$ cycles, means that 
+\[\forall \sigma \in S_n, \sigma = (a_1~a_2\cdots a_{m_1})(a_{m_1 + 1}\cdots a_{m_2})\cdots(a_{m_{k-1} + 1} \cdots a_{m_k})\]
+
+With this, we can easily compute $\sigma(x)$ for any $x \in [n]$. Find the cycle that $x$ is contained, then the immediately right-next element is $\sigma(x)$. 
+This decomposition is called \textit{cycle decomposition of $\sigma$}
+
+\end{tcolorbox}
+
+We can easily obtain the cycle decompositioning algorithm, so skip. And with this, we can easily compute cycle decomposition of $\sigma^{-1}$. 
+Just write the numbers in each cycle of the cycle decomposition of $\sigma$ in reverse order. i.e., 
+\[\sigma^{-1} = (a_{m_1}~ a_{m_1 - 1} \cdots, a_1) (a_{m_2}~\cdots a_{m_1 + 1})\cdots (a_{m_k} \cdots a_{m_{k-1} + 1})\]
+
+Also, we can observe that $\forall n \geq 3, S_n$ is not abelian group. This is because that $(1~3)\circ(1~2) \neq (1~2)\circ (1~3)$. 
+And note that, we can view $\sigma$ by composition of each cycles. (since cycles are permutations of $S_n$ itself) 
+Moreover, they are independent to order. i.e., \textit{disjoint cycles commute}. And also, each cycles are independent to cyclic permutation of inner elements. i.e., $(1~2~3) = (2~3~1) = (3~1~2)$
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Proposition 1.3.1.,breakable]
+
+The order of $\sigma \in S_n$ equals the least common multiple of the lengths of the cycles in its cycle decomposition.
+
+\begin{proof}
+    
+
+
+\end{proof}
+
+\end{tcolorbox}
+
+\end{document}
