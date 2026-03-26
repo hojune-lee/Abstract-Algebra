@@ -754,6 +754,39 @@ Then, $\sigma_g \in S_A$ and $\varphi_G : g \mapsto \sigma_g$ is a homomorphism 
 
 \end{tcolorbox}
 
+This $\varphi: G \rightarrow S_A$ is called permutation representation associated to the given action $G$ on $A$.
+i.e., If we have $G$ action on $A$, we can find homomorphism from $G$ to $S_A$ always. 
+Another direction is also hold. If we have $\varphi : G \rightarrow S_A$ a homomorphism, then 
+we can define $G$-action on $A$. 
 
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=faithful\, kernel\, left regular action]
+
+We say that a $G$ action on $A$ is \textit{faithful} if distinct elements of $G$ induce distinct permutations of $A$. 
+We say that the \textit{kernel} of $G$ action on $A$ be $\{g \in G ~|~ g \cdot a = a, ~~ \forall a \in A\}$
+Let $A$ be a set $A = G$. Define action of $G$ on $A$ by $g \cdot a = ga$. This action is called \textit{left regular action} of $G$ on itself.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 1.7.,breakable]
+
+\begin{enumerate}
+    \item Prove that a group $G$ acts faithfully on a set $A$ if and only if the kernel of the action is $\{1_G\}$. 
+    \item Assume $n$ is an even positive integer and show that $D_{2n}$ acts on the set consisting of pairs of opposite vertices of a regular $n$-gon. Find the kernel of this action.
+    \item Let $G$ be any group and $A = G$. Show that $g \cdot a = gag^{-1}$ is group action of $G$ on $A$. 
+    \item So, each $g \in G$ define a map $x \mapsto gxg^{-1}$. Prove that this is an isomorphism from $G$ to itself. 
+    \item Let $H$ be a group acting on a set $A$. Prove that the relation $\sim$ on $A$ defined by 
+    \[a \sim b \iff a = hb \text{ for some $h \in H$ }\]
+    is an equivalence relation. These equivalence classes is called \textit{orbit} of $x$ under the action $H$.
+    \item If $G$ is a finite group and $H < G$ then $|H|$ divides $|G|$. (Lagrange's Theorem)
+    \item Group of rigid motions of a tetrahedron is isomorphic to a subgroup of $S_4$.  
+\end{enumerate}
+
+\end{tcolorbox}
+
+\newpage 
+
+\chapter{Subgroups}
+
+\section{Definition and Examples}
 
 \end{document}
