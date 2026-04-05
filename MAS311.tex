@@ -33,7 +33,7 @@ pdfauthor={Hojune Lee},
 
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
-\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{lem}[thm]{Lemma}
@@ -788,5 +788,287 @@ Let $A$ be a set $A = G$. Define action of $G$ on $A$ by $g \cdot a = ga$. This 
 \chapter{Subgroups}
 
 \section{Definition and Examples}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Subgroup]
+
+Let $G$ be a group. $H \subseteq G$ is called \textit{subgroup} of $G$ if 
+$H$ is nonempty and $H$ is closed under products and inverses of $G$. We denote $H \leq G$. 
+
+\end{tcolorbox}
+
+Every subgroup must contain $1_G$. It can be the most easy assertation when $H \leq G$. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Subgroup Criterion]
+
+$H \leq G$ if and only if 
+\begin{itemize}
+    \item $H \neq \emptyset$, i.e. $1_G \in H$
+    \item $\forall x, y \in H, xy^{-1} \in H$
+\end{itemize}
+If $H$ is finite, then it is sufficient to show that $H$ is nonempty and closed under multiplication.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 2.1.,breakable]
+
+\begin{enumerate}
+    \item Give an explicit example of group $G$ and an infinite subset $H$ of $G$ that is closed under the group operation but is not a subgroup of $G$.
+    \item Prove that $G$ cannot have a subgroup $H$ with $|H| = n - 1$, where $n = |G| > 2$
+    \item Let $G$ be an abelian group. Prove that $\{g \in G ~|~ |g| < \infty\}$ is a subgroup of $G$ (called the \textit{torsion subgroup} of $G$). Give an explicit example where this set is not a subgroup when $G$ is non-abelian.
+    \item Let $H$ and $K$ be subgroups of $G$. Prove that $H \cup K$ is a subgroup of $G$ if and only if either $H \subseteq K$ or $K \subseteq H$.
+    \item Let $G = GL_n(F)$, where $F$ is any field. Define 
+    \[SL_n(F) = \{A \in GL_n(F)~|~\det(A) = 1\}\]
+    (called the \textit{special linear group}). Prove that $SL_n(F) \leq GL_n(F)$.
+    \item Prove that the intersection of an arbitrary nonempty collection of subgroups of $G$ is again a subgroup of $G$. (Do not assume the collection is countable)
+    \item Let $H$ be an subgroup of the additive group of rational numbers with the property that $1/x \in H$ for every nonzero element $x$ of $H$. Prove that $H = 0$ or $\BQ$
+    \item Let $H_1 \leq H_2 \leq \cdots $ be can ascending chain of subgroups of $G$. Prove that $\cup_{i=1}^{\infty} H_i$ is a subgroup of $G$.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\newpage 
+
+\section{Centralizers, Normalizers, Stabilizers, Kernels}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Centralizer]
+
+Let $G$ be a group and $A \subseteq G$. Define the \textit{centralizer} of $A$ in $G$ by 
+\[C_G(A) := \{g \in G ~|~ \forall a \in A, a = gag^{-1}\}\]
+In other words, $C_G(A)$ is subset of $G$ such that commutes with every element of $A$.
+
+\end{tcolorbox}
+
+\begin{lem}
+
+For any $A \subseteq G$, $C_G(A) \leq G$
+
+\end{lem}
+
+\begin{proof}
+    
+Clearly $1_G \in C_G(A)$, so $C_G(A) \neq \emptyset$ for any $A$. Suppose that $x, y \in C_G(A)$. Then, 
+\begin{align*}
+    \forall a \in A, & (xy^{-1}) a (xy^{-1})^{-1} \\
+    & = (xy^{-1})a(yx^{-1}) \\
+    &= x (y^{-1}ay) x^{-1} \\
+    &= a
+\end{align*}
+Hence, $C_G(A) \leq G$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Center]
+
+Define the \textit{center} of $G$ by 
+\[Z(G) = C_G(G) = \{g \in G ~|~ \forall x \in G, gx = xg \}\]
+So we can treat this as a special case of centralizer. 
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Normalizer]
+
+Let denote $gAg^{-1} = \{gag^{-1}~|~ a \in A\}$. Define the \textit{normalizer} of $A$ in $G$ by 
+\[N_G(A) = \{g \in G ~|~ gAg^{-1} = A\}\]
+Note that, it does not need to exactly commute with each elements of $A$.
+
+\end{tcolorbox}
+
+\begin{lem}
+    For any $A \subseteq G, N_G(A) \leq G$. 
+\end{lem}
+\begin{proof}
+    Same to above. 
+\end{proof}
+
+We defined centralizer and normalizer for the \lq subsets' of $G$. We can generalize this into notion of $G$-action on \lq any set'. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Stabilizer]
+
+Suppose that $G$ is a group acting on set $S$. For fixed $s \in S$, we define \textit{stabilizer} of $s$ in $G$ by 
+\[G_s = \{g \in G ~|~ g \cdot s = s\}\]
+
+\end{tcolorbox}
+
+\begin{lem}
+Let $G$ be a group acting on set $S$. For $s \in S$, $G_s \leq G$. 
+\end{lem}
+
+\begin{proof}
+    
+The axiom of group action gives us that $1_G \cdot s = s$, so $1_G \in G_s$. And for $g_1, g_2 \in G_s$, 
+\[(g_1 g_2^{-1}) \cdot s = g_1 \cdot (g_2^{-1} \cdot s) = g_1 \cdot (g_2^{-1} \cdot (g_2 \cdot s)) = g_1 \cdot s = s\]
+So $g_1 g_2^{-1} \in G_s$, hence $G_s \leq G$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Kernel]
+
+Let $G$ be a group acting on set $S$. The \textit{kernel} of left $G$-action on $S$ is defined by 
+\[\{g \in G ~|~ \forall s \in S, g \cdot s = s\}\]
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Connections between stabilizer and normalizer]
+
+Suppose that $G$ acts on $\CP(G)$, collection of all subsets of $G$. 
+Then action is defined by: 
+\[G \times \CP(G) \rightarrow \CP(G)\]
+By conjugation action:
+\[g: S \mapsto \{gsg^{-1} ~|~ s \in S\}\]
+
+Then stabilizer of $S$ in $G$ is normalizer of $S$ in $G$. 
+
+Similarly, suppose that $N_G(A)$ acts on $A \subseteq G$ by conjugation: 
+\[n: a \mapsto nan^{-1}\]
+Then, kernel of this action is center of $A$ in $G$. 
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 2.2.,breakable]
+
+\begin{enumerate}
+    \item Prove that $C_G(Z(G)) = G$ and deduce that $N_G(Z(G)) = G$.
+    \item Prove that if $A \subseteq B \subseteq G$ then $C_G(B) \leq C_G(A)$.
+    \item Show that if $H \leq G$ then $H \leq N_G(H)$. Give an example that this is not necessarilly true if $H$ is not a subgroup of G. 
+    \item Show that if $H \leq G$ then $H \leq C_G(H)$ if and only if $H$ is abelian. 
+    \item Let $n \in \BZ$ with $n \geq 3$. $Z(D_{2n}) = 1$ if $n$ is odd, and $Z(D_{2n}) = \{1, r^k\}$ if $n = 2k$.
+    \item Let $G = S_n$, fix an $i \in [n]$ and let $G_i = \{\sigma \in G ~|~ \sigma(i) = i\}$ (the stabilizer of $i$ in $G$). Use group actions to prove that $G_i$ is a subgroup of $G$. Find $|G_i|$. 
+    \item For any subgroup $H$ of $G$ and any nonempty subset $A$ of $G$ define $N_H(A)$ to be the set $\{h \in H ~|~ hAh^{-1} = A\}$. Show that $N_H(A) = N_G(A) \cap H$ and deduce that $N_H(A)$ is a subgroup of $H$. 
+    \item Let $H$ be a subgroup of order 2 in $G$. Show that $N_G(H) = C_G(H)$. Deduce that if $N_G(H) = G$ then $H \leq Z(G)$. 
+    \item Prove that $Z(G) \leq N_G(A)$ for any subset $A$ of $G$. 
+\end{enumerate}
+
+\end{tcolorbox}
+
+\newpage 
+
+\section{Cyclic groups and Cyclic Subgroups}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Cyclic Group]
+
+A group $H$ is \textit{cyclic} if $H$ can be generated by a single element, i.e., 
+\[\exists x \in H, H = \{x^n ~|~ n \in \BZ\}\]
+We denote $H = \langle x \rangle$ and $H$ is \textit{generated} by $x$. Cyclic group is always Abelian. 
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition]
+
+If $H = \langle x \rangle$, then $|H| = |x|$. More specifically, 
+\begin{itemize}
+    \item if $|H| = n < \infty$, then $x^n = 1$ and $1, x, \cdots, x^{n-1}$ are all distinct elements of $H$
+    \item if $|H| = \infty$, then $x^n \neq 1$ for all $n \neq 0$ and $x^a \neq x^b$ for all $a \neq b$ in $\BZ$. 
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+Suppose that $|x| = n < \infty$. Then, $\{1, x, \cdots, x^{n-1}\} \subseteq H$ and they are distinct. 
+However, for $x^k \in H$, $x^k = x^{np + q} = (x^n)^p \cdot x^q = x^q \in \{1, x, \cdots, x^{n-1}\}$. So, $H = \{1, x, \cdots, x^{n-1}\}$ and $|H| = n$. 
+Suppose that $|x| = \infty$. Then, for $a \neq b$, if $x^a = x^b$ then $x^{b - a} = 1$ so order $|x| \leq |b-a| < \infty$ contradiction. So, $|H| = \infty$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition]
+
+Let $G$ be an arbitrary group, $x \in G$ and $m, n \in \BZ$. If $x^n = 1, x^m = 1$ then 
+$x^d = 1$, where $d = (n, m)$. In particular, if $x^m = 1$ for some $m \in \BZ$ then $|x|$ divides $ m$
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+Euclidean algorithm gives us that $\exists r, s \in \BZ, d = (n, m) = nr + ms$. Then, 
+\[x^d = x^{(n,m)} = x^{nr + ms} = x^{nr} \cdot x^{ms} = 1\]
+Suppose that $|x| = n$. Then, $x^m = x^{np + q} = x^q = 1$ for $0 \leq q < n$. Since $|x| = n$, $q = 0$. So, $m = np$, implies that $|x|$ divides $m$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Theorem]
+
+Any two cyclic groups of the same order are isomorphic. More specifically, 
+\begin{itemize}
+    \item if $n \in \BZ^+$ and $\langle x \rangle, \langle y \rangle$ are both cyclic groups of order $n$, then 
+    \[\varphi: \langle x \rangle \rightarrow \langle y \rangle\]
+    \[x^k \mapsto y^k\]
+    is well defined and is an isomorphism. 
+    \item if $\langle x \rangle$ is an infinite cyclic group, the map 
+    \[\varphi: \BZ \rightarrow \langle x \rangle\]
+    \[k \mapsto x^k\]
+    is well defined and is an isomorphism.
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+To show that $\varphi$ is well-defined, sufficient to show that 
+\[\forall r, s \in \BZ, \quad x^r = x^s \implies \varphi(x^r) = \varphi(x^s)\]
+Here, $x^{r-s} = 1$ implies that for $|x| = |y| = n$, $n | (r - s)$. Then, $r = nk + s$ holds. So, 
+\[\varphi(x^{r}) = \varphi(x^{nk + s}) = y^{nk + s} = y^s = \varphi(x^s)\]
+So $\varphi$ is well-defined. Also, it is easy to show that $\varphi$ is a homomorphism from $\langle x \rangle$ to $\langle y \rangle$. 
+Finally, this map is surjective and both groups have same finite order, this is an isomorphism. For the second one, do similarly. 
+
+\end{proof}
+
+From here, we'll denote that $Z_n$ be the order $n$ cyclic group, since all of them are isomorphic. 
+Also, we can think that $Z_n \cong \BZ / n\BZ$. However, a given cyclic group may have more than one generator. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition]
+
+Let $G$ be a group, $x \in G$ and let $a \in \BZ - \{0\}$. 
+
+\begin{itemize}
+    \item If $|x| = \infty$, then $|x^a| = \infty$. 
+    \item If $|x| = n < \infty$, then $|x^a| = \frac{n}{(n, a)}$
+    \item In particular, if $|x| = n < \infty$ and $a$ is a positive integer dividing $n$, then $|x^a| = \frac{n}{a}$.  
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+Only second one is meaningful to prove. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition]
+
+Let $H = \langle x \rangle$. 
+\begin{itemize}
+    \item $|x| = \infty$ then $H = \langle x^a \rangle$ if and only if $a = \pm 1$
+    \item $|x| = n < \infty$ then $H  = \langle x^a \rangle$ if and only if $(a, n) = 1$. 
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Theorem]
+
+Let $H = \langle x \rangle$ be a cyclic group. 
+
+\begin{enumerate}
+    \item Every subgroup of $H$ is cyclic. More precisely, if $K \leq H$ then either $K = \{1\}$ or $K = \langle x^d \rangle$ where $d$ is smallest positive integer such that $x^d \in K$. 
+    \item If $|H| = \infty$, then for any distinct nonnegative integers $a, b$, $\langle x^a \rangle \neq \langle x^b \rangle$. Futhermore, for every integer $m$, $\langle x^m \rangle = \langle x^{|m|} \rangle$, so that the nontrivial subgroups of $H$ correspond bijectively with the integers $1, 2, 3, \cdots$. 
+    \item If $|H| = n < \infty$, then for each positive integer $a$ dividing $n$ there is a unique subgroup of $H$ of order $a$. This subgroup is cyclic group $\langle x^d \rangle$ where $d = n / a$. Futhermore, for every integer $m$, $\langle x^m \rangle = \langle x^{(n, m)} \rangle$ so that the subgroups of $H$ correspond bijectively with the positive divisors of $n$. 
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+\begin{enumerate}
+    \item For such $x^d \in K$, $\langle x^d \rangle \leq K$ is obvious. However, if there exists $x^m \in K$ such that $x^m \notin \langle x^d \rangle$, 
+    then we can find $k \in \BZ$ such that $0 < m - dk < d$, and since $x^{m - dk} \in K$, this is contradiction to choice of $d$. 
+    \item Easy to show. 
+    \item Suppose that $K$ be any subgroup of order $a$. Then by (1), $K = \langle x^b \rangle$. Then here, 
+    \[\frac{n}{d} = a = |K| = |x^b| = \frac{n}{(n, b)}\]
+    This implies that $d = (n, b)$. So $d | b$ and implies that $x^b \in \langle x^d \rangle$. Hence $\langle x^d \rangle \leq \langle x^b \rangle$. However they have 
+    same order, $K = \langle x^d \rangle$. 
+\end{enumerate}
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 2.3.,breakable]
+\end{tcolorbox}
 
 \end{document}
