@@ -1071,4 +1071,182 @@ Let $H = \langle x \rangle$ be a cyclic group.
 \begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 2.3.,breakable]
 \end{tcolorbox}
 
+\chapter{Quotient Groups, Homomorphisms}
+
+\section{Definitions}
+
+The ultimate goal of group theory is understanding the structure of groups, and then classify them. For that, 
+we need to understand \lq smaller' groups contained in original group. We discuss about subgroups in previous section. 
+Actually, there are another meaningful smaller groups, namely \textit{quotient groups}.  
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Fibers and Homomorphism]
+
+Suppose that $\varphi: G \rightarrow H$ is a group homomorphism. The \textit{fibers} of $\varphi$ are 
+the sets of elements of $G$ projecting to single elements of $H$. Actually, $H$ can be intuitively \lq larger' group than $G$. 
+However, the image of $G$, namely $\varphi(G)$ is at most large as $G$. So, a \textit{fiber} is
+elements of $G$ such that zipped into one points of $\varphi(G)$. 
+For any $a \in \varphi(G) \subseteq H$, we can define $X_a \subseteq G, \forall x \in X_a, \varphi(x) = a$ as a \textit{fiber above} $a$.  
+\end{tcolorbox}
+
+We'll dive into these interesting subgroups of $G$ during this chapter. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Kernel]
+
+Let $\varphi : G \rightarrow H$ be a homomorphism. The \textit{kernel} of $\varphi$ is 
+\[\ker \varphi := \{g \in G ~|~ \varphi(g) = 1_H\}\]
+i.e., \textit{kernel} is fiber above $1_H$. 
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition 1]
+
+Let $G, H$ be groups and $\varphi : G \rightarrow H$ be a homomorphism. 
+
+\begin{enumerate}
+    \item $\varphi(1_G) = 1_H$
+    \item $\varphi(g^{-1}) = \varphi(g)^{-1}$, for all $g \in G$
+    \item $\varphi(g^n) = \varphi(g)^n$, for all $g \in G$
+    \item $\ker \varphi \leq G$ 
+    \item $\varphi(G) \leq H$
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Quotient Groups]
+
+Let $\varphi : G \rightarrow H$ be a homomorphism with $\ker \varphi = K$. The \textit{quotient group}, $G / K$ is the group 
+whose elements are the fibers of $\varphi$ with the group operation : $X_a \cdot X_b = X_{ab}$
+
+\end{tcolorbox}
+
+In this definition, we intuitively know how they are working. But one is difficult to formalize these things and 
+use as a tool to understand the group structure of $G$. So, we'll view quotient group and homomorphisms as alternating perspective. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition 2]
+
+Let $\varphi: G \rightarrow H$ be a homomorphism and $\ker \varphi = K$. For a fiber on $a$, $\varphi^{-1}(a), X_a \in G / K$, 
+\[\forall u \in X_a, X_a = \{uk ~|~ k \in K\} = \{ku ~|~ k \in K\}\]
+
+\end{tcolorbox}
+
+Means that, we can enumerate all elements of any fibers by \textbf{one element} and \textbf{kernel}. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Cosets]
+
+For any $N \leq G$ and $g \in G$, 
+\[gN = \{g\cdot n ~|~ n \in N\}, \quad Ng = \{n \cdot g ~|~ n \in N\}\]
+called respectively a \textit{left coset} and \textit{right coset} of $N$ in $G$. 
+Any element of a coset is called a \textit{representative} for the coset. 
+\end{tcolorbox}
+
+\begin{prop}
+    
+For homomorphism $\varphi: G \rightarrow H$ with $K = \ker \varphi$, 
+every fiber is a left(right) coset of $K$ in $G$. And, if $N \leq G$ is kernel of some homomorphism, $gN = Ng$ for any $g \in G$. 
+To represent coset, the choice of element does not matter. Means that, $gN = g'N$ if $g, g'$ are in same coset. 
+
+\end{prop}
+
+This proposition gives us that, when we discuss quotient groups, it can be viewed as a set of left cosets. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=Theorem 3]
+
+Let $G$ be a group and $K$ is the kernel of some(unknown) homomorphism from $G$. Then, 
+collection of every left cosets of $K$ in $G$: 
+\[\{gK ~|~ \forall g \in G\}\]
+with following binary operation: 
+\[uK \cdot vK = (uv)K\]
+forms group, $G / K$. Sometimes we denote $\bar{u}$ to coset $uK$, the coset of $K$ containing $u$.
+
+\end{tcolorbox}
+
+This theorem is quite nice since we can understand $G/K$ without explicit homomorphism and computation of fibers \textbf{if $K$ is kernel of some homomorphism}. 
+Then natural question is that, what can we talk about \textbf{kernel of some homomorphism}? 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition 4]
+
+Let $N \leq G$. The set of left cosets of $N$ in $G$ forms a partition of $G$. Furthermore, $\forall u, v \in G, uN = vN$ if and only if $v^{-1}u \in N$ if and only if $u, v$ are in the same coset.
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+For any $g \in G$, there exists coset $gN \subseteq G$, so 
+\[\bigcup_{g \in G} gN = G\]
+Now it is enough to show that, all distinct cosets are disjoint. Suppose that $g_1N \neq g_2N$. 
+If $\exists x \in g_1N \cap g_2N$, $x = g_1n_1 = g_2n_2$ by definition. Then, $g_1 = g_2 n_2 n_1^{-1} = g_2m$, here $m \in N$ since $N \leq G$
+so $g_1 N \subseteq g_2 N$ and vice versa, $g_2 N \subseteq g_1 N$. This is contradiction, so $g_1 N \cap g_2N = \emptyset$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition 5]
+
+Let $N \leq G$. 
+
+\begin{enumerate}
+    \item The operation on set of left cosets of $N$ in $G$ described by 
+    \[uN \cdot vN = (uv)N\]
+    is well-defined if and only if $gng^{-1} \in N$ for all $g \in G$ and all $n \in N$. 
+    i.e., $N_G(N) = G$. 
+    \item If the above operation is well-defined, then it makes group $G/N$. 
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+($\Rightarrow$) The well-definedness implies that 
+\[\forall u, u_1 \in uN, \forall v, v_1 \in vN, \quad uvN = u_1v_1N \]
+Then, $n, 1\in N, g^{-1} \in g^{-1}N$, we can obtain from proposition 4: 
+\[ng^{-1}N = g^{-1}N \iff gng^{-1} \in N\]
+
+($\Leftarrow$) Suppose that $N_G(N) = G$. Then, $\forall u, u_1 \in uN, u_1 = un$ and similarly, $v_1 = vm$. 
+Then, 
+\[u_1 v_1 = (un)(vm) = u(vv^{-1})nvm = uv(v^{-1}nv)m = uvm' \in uvN\]
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Normal Subgroup]
+
+For $N \leq G$, if $N_G(N) = \{g \in G ~|~ gng^{-1} \in N\} = G$ then $N$ is \textit{normal subgroup} of $G$ and denote 
+$N \trianglelefteq G$
+
+\end{tcolorbox}
+
+\begin{prop}
+    $G / N$ is subgroup of $G$ if and only if $N \trianglelefteq G$ if and only if $gN = Ng$ for all $g \in G$. 
+\end{prop}
+
+\begin{prop}
+    To determine that $N \trianglelefteq G$, if we know $N = \langle A \rangle$, it is enough to show that 
+    $gag^{-1} \in N$ for any $a \in A, g \in G$. Further, if we know $G = \langle B \rangle$, it is sufficient to show that 
+    $bnb^{-1} \in N$ for any $n \in N, b \in B$. 
+\end{prop}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition 7]
+
+$N \trianglelefteq G \iff N = \ker \varphi \iff G / N$ is group.
+
+\end{tcolorbox}
+
+\begin{defn}
+
+Here, we can easily find above $\varphi: G \rightarrow G/N$ by $g \mapsto gN$. This is obviously 
+homomorphism whose kernel is $N$, is called \textit{natural homomorphism} of $G$ onto $G/N$. 
+
+\end{defn}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=!Caution!]
+
+Note that $A \trianglelefteq B$, $B \trianglelefteq C$ does not implies that $A \trianglelefteq C$. 
+i.e., $\trianglelefteq$ does not transitive. The \textit{normality} is relative. 
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 3.1.]
+\end{tcolorbox}
+
+\newpage 
+
+\section{Cosets and Lagrange's Theorem}
+
 \end{document}
