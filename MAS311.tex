@@ -1249,4 +1249,246 @@ i.e., $\trianglelefteq$ does not transitive. The \textit{normality} is relative.
 
 \section{Cosets and Lagrange's Theorem}
 
+In this section, we'll analyze the subgroup structure of $G$. One of the most important feature of group is its order. 
+One important theorem is following: 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=Lagrange's Theorem]
+
+$G$ is finite group and $H \leq G$. Then, $|H|$ divide $|G|$ and the number of left cosets of $H$ in $G$ is $\frac{|G|}{|H|}$.
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+It is enough to show that the order of every coset is same. Then, since $1H = H$ also a coset and cosets form a partition of $G$, 
+claim holds. Then we'll find bijection: 
+\[\forall g \in G, \quad H \rightarrow gH\]
+This is injective, since if $gh_1 = gh_2$ then $h_1 = h_2$ by cancellation in $G$. 
+Also surjective, obvious from the definition of $gH$. So clearly this is bijection, so 
+\[\forall g \in G, \quad |gH| = |H|\]
+This completes the proof.
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Index]
+
+Let $G$ be a group (possibily infinite) and $H \leq G$, the number of left cosets of $H$ in $G$ 
+is called \textit{index} of $H$ in $G$, and denoted by $|G:H|$
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Corollary 9]
+
+Let $G$ be a finite group and $x \in G$, then $|x|$ divides $|G|$, so $x^{|G|} = 1$
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+Since $x \in G$, we can construct $H = \langle x \rangle$ and $H \leq G$. Since $G$ is finite, 
+$|H|$ divide $|G|$. Since $H$ is cyclic group, $|H| = |x|$, so $|x|$ divides $|G|$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Corollary 10]
+
+    Let $G$ be a finite group and $|G| = p$ is prime, then $G \cong Z_p$
+    
+\end{tcolorbox}
+
+\begin{proof}
+    
+By above, for $x \in G$, $|x| = 1$ or $p$ since $p$ is prime. If $|x| = |G| = p$, then 
+\[G = \{1, x, \cdots, x^{p-1}\}\]
+Then $G$ is cyclic group ($=\langle x \rangle$), so $G \cong Z_p$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=gray!75!black,title=Example,breakable]
+
+Let $G$ be any group and $H \leq G$, $|G:H| = 2$. Then, $H \trianglelefteq G$
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+Since $|G:H| = 2$, there are 2 cosets of $H$ exists: $H$ and $G - H = gH$. 
+Suppose that there exists $h \in H$ such that $ghg^{-1} \in gH$. Then it implies that 
+\begin{align*}
+    ghg^{-1} = gh' & \implies hg^{-1} = h' \in H \\
+    & \implies g = h'^{-1}h \in H
+\end{align*}
+However, $g \in gH = G - H$. This is contradiction, so $\forall g \in G - H$ and $\forall h \in H$, $ghg^{-1} \in H$. 
+For $g \in H$, it is obvious. So, $N_G(H) = G$ and $H \trianglelefteq G$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Remarks]
+
+\begin{itemize}
+    \item \lq Normal' does not means common. Normal subgroup is quite rare structure when $G$ is given. 
+    \item Moreover, finding normal subgroup is hard problem. 
+    \item If $G$ is finite group and $n$ divides $|G|$, then $G$ need not have a subgroup of order $n$.
+    \item If $G$ is abelian and $n$ divides $|G|$, then subgroup whose order is $n$ must exists. 
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=Cauchy's Theorem]
+
+If $G$ is a finite group and $p$ is a prime dividing $|G|$ then $G$ has an element of order $p$. 
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=Sylow's Theorem]
+
+    If $G$ is a finite group of order $p^\alpha$, where $p$ is a prime and $p$ does not divide $m$, then $G$ has a subgroup of order $p^\alpha$.
+    
+\end{tcolorbox}
+
+Now, we introduce another very natural construction. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=brown!75!black,title=Subgroup Multiplication]
+
+Let $H, K \leq G$. We define 
+\[HK = \{hk ~|~ h \in H, k \in K\}\]
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Proposition 13]
+
+If $H, K$ are finite subgroup then 
+\[|HK| = \frac{|H||K|}{|H \cap K|}\]
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+We can denote 
+\[HK = \bigcup_{h \in H} hK\]
+
+We know that each cosets have same order $|K|$. So it is enough to show that there are 
+$\frac{|H|}{|H\cap K|}$ distinct cosets. We already show that 
+\begin{align*}
+    h_1K = h_2K &\iff h_2^{-1}h_1 \in K \\
+    & \iff h_2^{-1}h_1 \in K \cap H \\
+    & \iff h_1(H \cap K) = h_2(H \cap K)
+\end{align*}
+
+Then, since $H, K \leq G$ implies that $H \cap K \leq H$, so number of distinct cosets forms $hK$ is 
+same with $|H:H\cap K| = \frac{|H|}{|H\cap K|}$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=!Caution!]
+
+We can't guarantee $HK$ be a subgroup in general. See following proposition.
+
+\end{tcolorbox}
+
+\begin{prop}
+    
+$H, K \leq G$, $HK \leq G \iff HK = KH$
+
+\end{prop}
+
+\begin{proof}
+    
+($\Rightarrow$) If $HK \leq G$, then for any $k \in K, h \in H$, obtain $k, h \in HK$ so $kh \in HK$. 
+So, $KH \subseteq HK$. Conversely, let $hk \in HK$. Then $k^{-1}h^{-1} = h'k' \in HK$. 
+\[hk = (h'k')^{-1} = k'^{-1}h'^{-1} \in KH\]
+So, $HK \subseteq KH$.
+
+($\Leftarrow$) If $HK = KH$, then for any $hk, h'k' \in HK$, 
+\begin{align*}
+    (hk)(h'k')^{-1} &= h(kk'^{-1})h'^{-1} \\
+    & = h (k_0 h_0) \\
+    &= h (h_1 k_1) \\
+    & = (h h_1) k_1 \in HK
+\end{align*}
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Corollary 15(For Second Isomorphism Theorem)]
+
+If $H, K \leq G$ and $H \leq N_G(K)$ then $HK \leq G$. Further, if $K \trianglelefteq G$ then $HK \leq G$ for any $H \leq G$. 
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+Since $H \leq N_G(K)$, we know that $hKh^{-1} = K$ for any $h \in H$. 
+Then, this directly implies that $hK = Kh$, so $HK = KH$. So, $HK \leq G$. If $K \trianglelefteq G$, then for any $H \leq G$, $H \leq N_G(K)$ obtained. This completes the proof.
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 3.2.]
+\end{tcolorbox}
+
+\newpage 
+
+\section{The Isomorphism Theorems}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=First Isomorphism Theorem]
+
+If $\varphi: G \rightarrow H$ is a homomorphism, then $\ker \varphi \trianglelefteq G$ and $G/\ker \varphi \cong \varphi(G)$
+\[
+\begin{tikzcd}[row sep=0.5em]
+        G \arrow{rr}{\varphi: \text{ Hom}} \arrow[two heads]{dd} & & H \\
+        & \mathcolor{red}{\circlearrowleft} & \\
+        G/\ker \varphi \arrow[rr, red, "\cong", "\exists! \bar{\varphi}"'] & & \varphi(G) \arrow[hook]{uu}
+\end{tikzcd}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=green!75!black,title=Corollary 17]
+
+Let $\varphi: G \rightarrow H$ be a homomorphism. 
+\begin{enumerate}
+    \item $\varphi$ is injective if and only if $\ker \varphi = 1$
+    \item $|G : \ker \varphi| = |\varphi(G)|$
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{prop}
+$\varphi: V \rightarrow W$ is a linear transformation, then $\dim V = \rank ~ \varphi + \mathrm{nullity} ~ \varphi$
+\end{prop}
+
+\begin{proof}
+    
+\[\varphi(V) \cong V / \ker \varphi \implies \rank ~ \varphi = \dim V - \mathrm{nullity } \varphi\]
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=Second Isomorphism Theorem]
+
+If $A, B \leq G$ and $A \subseteq N_G(B)$ then $AB \leq G$ and $B \trianglelefteq AB$, $A\cap B \trianglelefteq A$, and 
+\[(AB / B) \cong (A / (A \cap B))\]
+
+\[
+\begin{tikzcd}[row sep = 0.5em]
+    A \arrow[rr] \arrow[dd, two heads] & & AB \arrow[dd, two heads] \\
+    & \mathcolor{red}{\circlearrowleft} & \\
+    A/(A \cap B) \arrow[rr, red, "\cong", "\exists!"'] & & AB/B
+\end{tikzcd}
+\]
+\[
+\begin{tikzcd}[row sep = 0.5em]
+    & G & \\
+    & AB \arrow[ld] \arrow[rd] & \\
+    A \arrow[rd] &  & B \arrow[ld] \\
+    & A \cap B & \\
+    & 1 & 
+\end{tikzcd}
+\]
+
+\end{tcolorbox}
+
 \end{document}
