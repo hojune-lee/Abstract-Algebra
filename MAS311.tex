@@ -1442,7 +1442,7 @@ If $\varphi: G \rightarrow H$ is a homomorphism, then $\ker \varphi \trianglelef
 \begin{tikzcd}[row sep=0.5em]
         G \arrow{rr}{\varphi: \text{ Hom}} \arrow[two heads]{dd} & & H \\
         & \mathcolor{red}{\circlearrowleft} & \\
-        G/\ker \varphi \arrow[rr, red, "\cong", "\exists! \bar{\varphi}"'] & & \varphi(G) \arrow[hook]{uu}
+        G/\ker \varphi \arrow[rr, leftrightarrow, red, "\cong", "\exists! \bar{\varphi}"'] & & \varphi(G) \arrow[hook]{uu}
 \end{tikzcd}
 \]
 \end{tcolorbox}
@@ -1476,19 +1476,149 @@ If $A, B \leq G$ and $A \subseteq N_G(B)$ then $AB \leq G$ and $B \trianglelefte
 \begin{tikzcd}[row sep = 0.5em]
     A \arrow[rr] \arrow[dd, two heads] & & AB \arrow[dd, two heads] \\
     & \mathcolor{red}{\circlearrowleft} & \\
-    A/(A \cap B) \arrow[rr, red, "\cong", "\exists!"'] & & AB/B
+    A/(A \cap B) \arrow[rr, red, leftrightarrow, "\cong", "\exists!"'] & & AB/B
 \end{tikzcd}
 \]
 \[
 \begin{tikzcd}[row sep = 0.5em]
-    & G & \\
+    & G \arrow[d, no head, dotted] & \\
     & AB \arrow[ld] \arrow[rd] & \\
     A \arrow[rd] &  & B \arrow[ld] \\
     & A \cap B & \\
-    & 1 & 
+    & 1 \arrow[u, no head, dotted] & 
 \end{tikzcd}
 \]
 
+\end{tcolorbox}
+
+\begin{proof}
+    
+As corollary 15 mentioned, we can obtain $AB \leq G$ directly. Next, since $A \subseteq N_G(B)$ and $B \subseteq N_G(B)$ is obvious, we can obtain that $AB \subseteq N_G(B)$ and so $B \trianglelefteq AB$. This implies that $AB/B$ is group and $a_1B \cdot a_2B = (a_1 a_2)B$ is well-defined. Then now, let's imagine following mapping: 
+\[\varphi: A \rightarrow AB/B\]
+work as 
+\[\varphi: a \mapsto (a\cdot 1)B = aB\]
+Here, $\varphi$ is clearly a homomorphism on $A$. The kernel of this map is 
+\[\ker \varphi = \{a \in A ~|~ aB = B\} = \{a \in A ~|~ a \in B\} = A \cap B\]
+And $\varphi$ is surjective, so $\varphi(A) = AB/B$. 
+So we can apply First Isomorphism Theorem: 
+\[
+\begin{tikzcd}
+    A \arrow[rr, "\varphi", two heads] \arrow[dd, two heads] & & AB/B \\
+      & &      \\
+    A/(A\cap B) \arrow[rr, red, "\cong", leftrightarrow]& & AB/B \arrow[uu, hook]
+\end{tikzcd}
+\]
+
+So, 
+\[AB/B \cong A/(A \cap B)\]
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=gray!75!black,title=Remark]
+
+More often, instead of $A \subseteq N_G(B)$ or $A \leq N_G(B)$, following condition also works. 
+\[B \trianglelefteq G\]
+(Since this directly implies that $A \leq N_G(B)$)
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=Third Isomorphism Theorem]
+
+Let $G$ be a group and $H \trianglelefteq G$, $K \trianglelefteq G$, $H \leq K$. Then $K/H \trianglelefteq G/H$ and 
+\[(G/H)/(K/H) \cong G/K\]
+
+\[
+\begin{tikzcd}
+    G \arrow[dd, two heads] \arrow[rr, two heads] & & G/H \arrow[dd, two heads] \\
+    & \mathcolor{red}{\circlearrowleft} & \\
+    G/K \arrow[rr, no head, red, "\cong"]& & (G/H)/(K/H)
+\end{tikzcd}
+\]
+
+\end{tcolorbox}
+
+\begin{proof}
+    
+For any $kH \in K/H$ and $gH \in G/H$, since $kH \in G/H$ and $H \trianglelefteq G$, following is well-defined. 
+\[(gH)(kH)(gH)^{-1} = (gH)(kH)(g^{-1}H) = (gkg^{-1})H \in K/H\]
+So, 
+\[K/H \trianglelefteq G/H\]
+Then, we can imagine following mapping: 
+\[\varphi: G/H \rightarrow G/K\]
+works by 
+\[\varphi: gH \mapsto gK\]
+Then $\varphi$ is homomorphism and 
+\begin{align*}
+    \ker \varphi &= \{gH \in G/H ~|~ gK = K\} \\
+    &= \{gH \in G/H ~|~ g \in K\} \\
+    &= K/H 
+\end{align*}
+
+So, we can draw First Isomorphism Theorem here: 
+\[
+\begin{tikzcd}
+    G/H \arrow[rr, "\varphi"] \arrow[dd, two heads] & & G/K \\
+        & &     \\
+    (G/H)(K/H) \arrow[rr, red, leftrightarrow, "\cong"] & & G/K \arrow[uu, hook]
+\end{tikzcd}
+\]
+This shows that 
+\[(G/H)/(K/H) \cong G/K\]
+\end{proof}
+
+Now, we want to use $G/N$ as tool of understanding structure of $G$. Then one natural consequence is about their lattices. 
+We'll observe following in Fourth Isomorphism Theorem.
+
+\[
+\begin{tikzcd}
+    G \arrow[d, no head, dotted, "\text{Lattice of }G/N"] \\
+    N \arrow[d, no head, dotted, "\text{Lattice of }N"']\\
+    1
+\end{tikzcd}
+\]
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=Fourth Isomorphism Theorem]
+
+Let $N \trianglelefteq G$ then there exists a bijection $A \rightarrow \bar{A}$ between 
+\[\{A \leq G ~|~ N \subseteq A\} \leftrightarrow \{\bar{A} = A/N \leq G/N\}\]
+And for $N \leq A, B \leq G$, 
+\begin{enumerate}
+    \item $A \leq B$ if and only if $\overbar{A} \leq \overbar{B}$
+    \item $A \leq B$ then $|B : A| = |\overbar{B} : \overbar{A}|$
+    \item $\overbar{\langle A, B \rangle} = \langle \overbar{A}, \overbar{B} \rangle$
+    \item $\overbar{A \cap B} = \overbar{A} \cap \overbar{B}$
+    \item $A \trianglelefteq G$ if and only if $\overbar{A} \trianglelefteq \overbar{G}$
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{proof}
+    
+For any $\overbar{A} \leq G/N$, $\overbar{A}$ is collection of cosets and coset binary operation is well-defined. 
+So, 
+\[\forall a_1N , a_2N \in \overbar{A}, \quad (a_1a_2)N \in \overbar{A}\] 
+So, the complete preimage of $\overbar{A}$ is disjoint union of each complete preimage of $aN \in \overbar{A}$, 
+noted by 
+\[A = \biguplus_{aN \in \overbar{A}} A_a\]
+Then, $\forall a, b \in A$, we know that $bN \in \overbar{A}$, so $b^{-1}N \in \overbar{A}$ and so $b^{-1} \in A$. 
+So, we can obtain 
+\[ab^{-1} \in A \implies A \leq G\]
+So, above bijection is surjective and $\overbar{A} = A/N$. 
+
+Now suppose that $\overbar{A_1} = \overbar{A_2}$. Then as we've seen, $A_1/N = A_2/N$. 
+It is not hard to see that $A_1 = A_2$. 
+
+\end{proof}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=gray!75!black,title=Remarks]
+
+Let $\varphi: G \rightarrow G/N$ be natural homomorphism. Then, for $H \leq G$, 
+\[\varphi(H) = \varphi(HN)\]
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=violet!75!white,title=Exercise Sec 3.3.]
+
+
+    
 \end{tcolorbox}
 
 \end{document}
