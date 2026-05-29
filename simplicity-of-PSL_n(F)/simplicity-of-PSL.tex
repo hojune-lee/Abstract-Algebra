@@ -1,0 +1,496 @@
+
+\documentclass[12pt, letterpaper]{amsart}
+\usepackage[left=1in,right=1in,bottom=0.5in,top=0.8in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{epstopdf}
+\usepackage[pdfpagelabels,hyperindex]{hyperref}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz-cd}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{comment}
+\usepackage{mathpartir}
+\usepackage{braket}
+\usepackage{tikz}
+\usetikzlibrary{quantikz}
+\usetikzlibrary{angles, quotes}
+\pgfplotsset{compat=1.18}
+
+
+\linespread{1.4} 
+
+\hypersetup{
+pdftitle={.},
+pdfauthor={Hojune Lee},
+}
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{ppty}[thm]{Property}
+\newtheorem{ppties}[thm]{Properties}
+\newtheorem{axiom}[thm]{Axiom}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{prob}[thm]{Problem}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{limit}[thm]{Limitation}
+
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+
+
+% newcommand bb
+    \newcommand{\BA}{{\mathbb {A}}} \newcommand{\BB}{{\mathbb {B}}}
+    \newcommand{\BC}{{\mathbb {C}}} \newcommand{\BD}{{\mathbb {D}}}
+    \newcommand{\BE}{{\mathbb {E}}} \newcommand{\BF}{{\mathbb {F}}}
+    \newcommand{\BG}{{\mathbb {G}}} \newcommand{\BH}{{\mathbb {H}}}
+    \newcommand{\BI}{{\mathbb {I}}} \newcommand{\BJ}{{\mathbb {J}}}
+    \newcommand{\BK}{{\mathbb {U}}} \newcommand{\BL}{{\mathbb {L}}}
+    \newcommand{\BM}{{\mathbb {M}}} \newcommand{\BN}{{\mathbb {N}}}
+    \newcommand{\BO}{{\mathbb {O}}} \newcommand{\BP}{{\mathbb {P}}}
+    \newcommand{\BQ}{{\mathbb {Q}}} \newcommand{\BR}{{\mathbb {R}}}
+    \newcommand{\BS}{{\mathbb {S}}} \newcommand{\BT}{{\mathbb {T}}}
+    \newcommand{\BU}{{\mathbb {U}}} \newcommand{\BV}{{\mathbb {V}}}
+    \newcommand{\BW}{{\mathbb {W}}} \newcommand{\BX}{{\mathbb {X}}}
+    \newcommand{\BY}{{\mathbb {Y}}} \newcommand{\BZ}{{\mathbb {Z}}}
+
+% newcommand  scr
+    \newcommand{\sA}{{\mathscr {A}}} \newcommand{\sB}{{\mathscr {B}}}
+    \newcommand{\sC}{{\mathscr {C}}} \newcommand{\sD}{{\mathscr {D}}}
+    \newcommand{\sE}{{\mathscr {E}}} \newcommand{\sF}{{\mathscr {F}}}
+    \newcommand{\sG}{{\mathscr {G}}} \newcommand{\sH}{{\mathscr {H}}}
+    \newcommand{\sI}{{\mathscr {I}}} \newcommand{\sJ}{{\mathscr {J}}}
+    \newcommand{\sK}{{\mathscr {K}}} \newcommand{\sL}{{\mathscr {L}}}
+    \newcommand{\sN}{{\mathscr {N}}} \newcommand{\sM}{{\mathscr {M}}}
+    \newcommand{\sO}{{\mathscr {O}}} \newcommand{\sP}{{\mathscr {P}}}
+    \newcommand{\sQ}{{\mathscr {Q}}} \newcommand{\sR}{{\mathscr {R}}}
+    \newcommand{\sS}{{\mathscr {S}}} \newcommand{\sT}{{\mathscr {T}}}
+    \newcommand{\sU}{{\mathscr {U}}} \newcommand{\sV}{{\mathscr {V}}}
+    \newcommand{\sW}{{\mathscr {W}}} \newcommand{\sX}{{\mathscr {X}}}
+    \newcommand{\sY}{{\mathscr {Y}}} \newcommand{\sZ}{{\mathscr {Z}}}
+
+
+% newcommand cal
+    \newcommand{\CA}{{\mathcal {A}}} \newcommand{\CB}{{\mathcal {B}}}
+    \newcommand{\CC}{{\mathcal {C}}} \newcommand{\CD}{{\mathcal {D}}}
+    \newcommand{\CE}{{\mathcal {E}}} \newcommand{\CF}{{\mathcal {F}}}
+    \newcommand{\CG}{{\mathcal {G}}} \newcommand{\CH}{{\mathcal {H}}}
+    \newcommand{\CI}{{\mathcal {I}}} \newcommand{\CJ}{{\mathcal {J}}}
+    \newcommand{\CK}{{\mathcal {K}}} \newcommand{\CL}{{\mathcal {L}}}
+    \newcommand{\CM}{{\mathcal {M}}} \newcommand{\CN}{{\mathcal {N}}}
+    \newcommand{\CO}{{\mathcal {O}}} \newcommand{\CP}{{\mathcal {P}}}
+    \newcommand{\CQ}{{\mathcal {Q}}} \newcommand{\CR}{{\mathcal {R}}}
+    \newcommand{\CS}{{\mathcal {S}}} \newcommand{\CT}{{\mathcal {T}}}
+    \newcommand{\CU}{{\mathcal {U}}} \newcommand{\CV}{{\mathcal {V}}}
+    \newcommand{\CW}{{\mathcal {W}}} \newcommand{\CX}{{\mathcal {X}}}
+    \newcommand{\CY}{{\mathcal {Y}}} \newcommand{\CZ}{{\mathcal {Z}}}
+
+    % newcommand frak
+     \newcommand{\fa}{{\mathfrak{a}}}  \newcommand{\fb}{{\mathfrak{b}}}
+     \newcommand{\fc}{{\mathfrak{c}}}  \newcommand{\fd}{{\mathfrak{d}}}
+     \newcommand{\fe}{{\mathfrak{e}}}  \newcommand{\ff}{{\mathfrak{f}}}
+     \newcommand{\fg}{{\mathfrak{g}}}  \newcommand{\fh}{{\mathfrak{h}}}
+     \newcommand{\fii}{{\mathfrak{i}}}  \newcommand{\fj}{{\mathfrak{j}}}
+     \newcommand{\fk}{{\mathfrak{m}}}  \newcommand{\fl}{{\mathfrak{l}}}
+     \newcommand{\fm}{{\mathfrak{m}}}  \newcommand{\fn}{{\mathfrak{n}}}
+     \newcommand{\fo}{{\mathfrak{o}}}  \newcommand{\fp}{{\mathfrak{p}}}
+     \newcommand{\fq}{{\mathfrak{q}}}  \newcommand{\fr}{{\mathfrak{r}}}
+     \newcommand{\fs}{{\mathfrak{s}}}  \newcommand{\ft}{{\mathfrak{t}}}
+     \newcommand{\fu}{{\mathfrak{u}}}  \newcommand{\fv}{{\mathfrak{v}}}
+     \newcommand{\fw}{{\mathfrak{w}}}  \newcommand{\fx}{{\mathfrak{x}}}
+     \newcommand{\fy}{{\mathfrak{y}}}  \newcommand{\fz}{{\mathfrak{z}}}
+
+    \newcommand{\fA}{{\mathfrak{A}}}  \newcommand{\fB}{{\mathfrak{B}}}
+     \newcommand{\fC}{{\mathfrak{C}}}  \newcommand{\fD}{{\mathfrak{D}}}
+     \newcommand{\fE}{{\mathfrak{E}}}  \newcommand{\fF}{{\mathfrak{F}}}
+     \newcommand{\fG}{{\mathfrak{G}}}  \newcommand{\fH}{{\mathfrak{H}}}
+     \newcommand{\fI}{{\mathfrak{I}}}  \newcommand{\fJ}{{\mathfrak{J}}}
+     \newcommand{\fK}{{\mathfrak{K}}}  \newcommand{\fL}{{\mathfrak{L}}}
+     \newcommand{\fM}{{\mathfrak{M}}}  \newcommand{\fN}{{\mathfrak{N}}}
+     \newcommand{\fO}{{\mathfrak{O}}}  \newcommand{\fP}{{\mathfrak{P}}}
+     \newcommand{\fQ}{{\mathfrak{Q}}}  \newcommand{\fR}{{\mathfrak{R}}}
+     \newcommand{\fS}{{\mathfrak{S}}}  \newcommand{\fT}{{\mathfrak{T}}}
+     \newcommand{\fU}{{\mathfrak{U}}}  \newcommand{\fV}{{\mathfrak{V}}}
+     \newcommand{\fW}{{\mathfrak{W}}}  \newcommand{\fX}{{\mathfrak{X}}}
+     \newcommand{\fY}{{\mathfrak{Y}}}  \newcommand{\fZ}{{\mathfrak{Z}}}
+
+
+
+ % newcommand :rm
+     \newcommand{\RA}{{\mathrm {A}}} \newcommand{\RB}{{\mathrm {B}}}
+    \newcommand{\RC}{{\mathrm {C}}} \newcommand{\RD}{{\mathrm {D}}}
+    \newcommand{\RE}{{\mathrm {E}}} \newcommand{\RF}{{\mathrm {F}}}
+    \newcommand{\RG}{{\mathrm {G}}} \newcommand{\RH}{{\mathrm {H}}}
+    \newcommand{\RI}{{\mathrm {I}}} \newcommand{\RJ}{{\mathrm {J}}}
+    \newcommand{\RK}{{\mathrm {K}}} \newcommand{\RL}{{\mathrm {L}}}
+    \newcommand{\RM}{{\mathrm {M}}} \newcommand{\RN}{{\mathrm {N}}}
+    \newcommand{\RO}{{\mathrm {O}}} \newcommand{\RP}{{\mathrm {P}}}
+    \newcommand{\RQ}{{\mathrm {Q}}} \newcommand{\RR}{{\mathrm {R}}}
+    \newcommand{\RS}{{\mathrm {S}}} \newcommand{\RT}{{\mathrm {T}}}
+    \newcommand{\RU}{{\mathrm {U}}} \newcommand{\RV}{{\mathrm {V}}}
+    \newcommand{\RW}{{\mathrm {W}}} \newcommand{\RX}{{\mathrm {X}}}
+    \newcommand{\RY}{{\mathrm {Y}}} \newcommand{\RZ}{{\mathrm {Z}}}
+
+    \newcommand{\Ad}{{\mathrm{Ad}}} \newcommand{\Aut}{{\mathrm{Aut}}}
+    \newcommand{\Br}{{\mathrm{Br}}} \newcommand{\Ch}{{\mathrm{Ch}}}
+    \newcommand{\cod}{{\mathrm{cod}}} \newcommand{\cont}{{\mathrm{cont}}}
+    \newcommand{\cl}{{\mathrm{cl}}}   \newcommand{\Cl}{{\mathrm{Cl}}}
+    \newcommand{\disc}{{\mathrm{disc}}}\newcommand{\Eis}{{\mathrm{Eis}}}
+    \newcommand{\Div}{{\mathrm{Div}}} \renewcommand{\div}{{\mathrm{div}}}
+    \newcommand{\End}{{\mathrm{End}}} \newcommand{\Frob}{{\mathrm{Frob}}}
+    \newcommand{\Gal}{{\mathrm{Gal}}} \newcommand{\GL}{{\mathrm{GL}}}
+    \newcommand{\Hom}{{\mathrm{Hom}}} \renewcommand{\Im}{{\mathrm{Im}}}
+    \newcommand{\Ind}{{\mathrm{Ind}}} \newcommand{\ind}{{\mathrm{ind}}}
+    \newcommand{\inv}{{\mathrm{inv}}}
+    \newcommand{\Isom}{{\mathrm{Isom}}} \newcommand{\Jac}{{\mathrm{Jac}}}
+    \newcommand{\ad}{{\mathrm{ad}}}  \newcommand{\Tr}{{\mathrm{Tr}}}
+    \newcommand{\Ker}{{\mathrm{Ker}}} \newcommand{\Ros}{{\mathrm{Ros}}}
+    \newcommand{\Lie}{{\mathrm{Lie}}} \newcommand{\Hol}{{\mathrm{Hol}}}
+
+    \newcommand{\cyc}{{\mathrm{cyc}}}\newcommand{\id}{{\mathrm{id}}}
+    \newcommand{\new}{{\mathrm{new}}} \newcommand{\NS}{{\mathrm{NS}}}
+    \newcommand{\ord}{{\mathrm{ord}}} \newcommand{\rank}{{\mathrm{rank}}}
+    \newcommand{\PGL}{{\mathrm{PGL}}} \newcommand{\Pic}{\mathrm{Pic}}
+    \newcommand{\cond}{\mathrm{cond}} \newcommand{\Is}{{\mathrm{Is}}}
+    \renewcommand{\Re}{{\mathrm{Re}}} \newcommand{\reg}{{\mathrm{reg}}}
+    \newcommand{\Res}{{\mathrm{Res}}} \newcommand{\Sel}{{\mathrm{Sel}}}
+    \newcommand{\RTr}{{\mathrm{Tr}}} \newcommand{\alg}{{\mathrm{alg}}}
+    \newcommand{\PSL}{{\mathrm{PSL}}}
+
+\newcommand{\coker}{{\mathrm{coker}}}
+\newcommand{\val}{{\mathrm{val}}} \newcommand{\sign}{{\mathrm{sign}}}
+\newcommand{\mult}{{\mathrm{mult}}} \newcommand{\Vol}{{\mathrm{Vol}}}
+\newcommand{\Meas}{{\mathrm{Meas}}}\renewcommand{\mod}{\ \mathrm{mod}\ }
+\newcommand{\Ann}{\mathrm{Ann}}
+\newcommand{\Tor}{\mathrm{Tor}}
+\newcommand{\Supp}{\mathrm{Supp}}\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Coker}{\mathrm{Coker}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\Irr}{\mathrm{Irr}}\newcommand{\Inf}{\mathrm{Inf}}\newcommand{\Sup}{\mathrm{Sup}}
+\newcommand{\rk}{\mathrm{rk}}\newcommand{\Fil}{\mathrm{Fil}}
+\newcommand{\Sim}{{\mathrm{Sim}}} \newcommand{\SL}{{\mathrm{SL}}}
+\newcommand{\Spec}{{\mathrm{Spec}}} \newcommand{\SO}{{\mathrm{SO}}}
+\newcommand{\SU}{{\mathrm{SU}}} \newcommand{\Sym}{{\mathrm{Sym}}}
+\newcommand{\sgn}{{\mathrm{sgn}}} \newcommand{\tr}{{\mathrm{tr}}}
+\newcommand{\tor}{{\mathrm{tor}}}  \newcommand{\ur}{{\mathrm{ur}}}
+\newcommand{\vol}{{\mathrm{vol}}}  \newcommand{\ab}{{\mathrm{ab}}}
+\newcommand{\Sh}{{\mathrm{Sh}}} \newcommand{\Ell}{{\mathrm{Ell}}}
+\newcommand{\Char}{{\mathrm{Char}}}\newcommand{\Tate}{{\mathrm{Tate}}}
+\newcommand{\corank}{{\mathrm{corank}}} \newcommand{\Cond}{{\mathrm{Cond}}}
+\newcommand{\Inn}{{\mathrm{Inn}}} \newcommand{\Spf}{{\mathrm{Spf}}}
+\newcommand{\Mat}{{\mathrm{Mat}}}
+
+
+    \font\cyr=wncyr10  \newcommand{\Sha}{\hbox{\cyr X}}
+    \newcommand{\wt}{\widetilde} \newcommand{\wh}{\widehat} \newcommand{\ck}{\check}
+    \newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
+    \newcommand{\pair}[1]{\langle {#1} \rangle}
+    \newcommand{\wpair}[1]{\left\{{#1}\right\}}
+    \newcommand{\intn}[1]{\left( {#1} \right)}
+    \newcommand{\norm}[1]{\|{#1}\|}
+    \newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+    \newcommand{\ds}{\displaystyle}
+    \newcommand{\ov}{\overline}
+    \newcommand{\Gros}{Gr\"{o}ssencharaktere}
+    \newcommand{\incl}{\hookrightarrow}
+    \newcommand{\lra}{\longrightarrow}
+     \newcommand{\ra}{\rightarrow}
+    \newcommand{\imp}{\Longrightarrow}
+    \newcommand{\lto}{\longmapsto}
+    \newcommand{\bs}{\backslash}
+    \newcommand{\nequiv}{\equiv\hspace{-7.8pt}/}
+    \theoremstyle{plain}
+\newcommand{\normal}{\trianglelefteq}
+
+\definecolor{energy}{RGB}{114,0,172}
+\definecolor{freq}{RGB}{45,177,93}
+\definecolor{spin}{RGB}{251,0,29}
+\definecolor{signal}{RGB}{203,23,206}
+\definecolor{circle}{RGB}{217,86,16}
+\definecolor{average}{RGB}{203,23,206}
+\newcommand{\K}{\operatornamewithlimits{K}}
+\colorlet{shadecolor}{gray!20}
+\pgfplotsset{compat=1.9}
+\def\N{10}
+\def\M{4}
+\usepgflibrary{fpu}
+
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+
+\makeatletter
+\let\c@equation\c@thm
+\raggedbottom
+\makeatother
+\numberwithin{equation}{section}
+%--------Meta Data: Fill in your info------
+\author[Hojune Lee]{Hojune Lee,\ \ 20210541}
+
+\title{Simplicity of $\operatorname{PSL}_n(F)$}
+\begin{document}
+
+\maketitle
+
+\section{Simplicity of $\PSL_n(\BF)$}
+
+For given field $\BF$, the \textit{projective special linear group} $\operatorname{PSL}_n(\BF)$ is defined by 
+\[\operatorname{PSL}_n(\BF) = \operatorname{SL}_n(\BF)/Z(\operatorname{SL}_n(\BF))\]
+
+What is the center of $\SL_n(\BF)$? We claim that 
+\[Z(\SL_n(\BF)) = \{\lambda I_n \mid \lambda^n = 1 \in \BF\}\]
+\begin{proof}
+    First show that $h \in Z(\SL_n(\BF))$ must be diagonal. If $h_{ij} \neq 0$ for $i \neq j$, 
+    \[h \cdot \operatorname{diag}(1, \cdots, x, \cdots, x^{-1}, \cdots, 1) \neq \operatorname{diag}(1, \cdots, x, \cdots, x^{-1}, \cdots, 1) \cdot h\]
+    since $(i,j)$-th entry of left side is $x^{-1}\cdot h_{ij}$ but right side is $x \cdot h_{ij}$. 
+    Then $h \in Z(\SL_n(\BF))$ is $\operatorname{diag}(h_1, \cdots, h_n)$. 
+    For $I_n + E_{ij}$, 
+    \[(I_n + E_{ij}) \cdot h = h \cdot (I_n + E_{ij})\]
+    it implies $h_i = h_j$ so $Z(\SL_n(\BF))$ is set of scalar matrices in $\SL_n(\BF)$. 
+\end{proof}
+
+Intuitively, we can view $\SL_n(\BF)$ acts on the set of 1-dim subspaces of vector space $\BF^n$. 
+In such perspective, the center $Z(\SL_n(\BF))$ is the kernel of such action. 
+It changes the \lq speed' of 1-dim subspaces but not shapes. So, 
+\[\PSL_n(\BF): \text{ acts on 1-dim line, change the angle of lines. }\]
+
+\hrulefill
+
+\begin{defn}
+    (Doubly Transitivity) $G$ acts on $X$ doubly transitive means that, 
+    for $x_1 \neq x_2$ and $y_1 \neq y_2$, there exists $g \in G$ such that 
+    \[(x_1, x_2) \xmapsto{g} (y_1, y_2)\]
+    equivalently, $G$ acts transitively on $X$ and let's fix $x \in X$. Then, $\Stab_G(x)$ acts on $X \setminus \{x\}$ transitively. 
+\end{defn}
+
+\hrulefill
+
+\begin{proof}
+    (Equivalence between 2 definitions) Suppose that first definition holds. 
+    Then, for $x' \in X \setminus \{x\}$ and any $y \in X \setminus \{x\}$, there exists $g \in G$ such that 
+    \[(x, x') \xmapsto{g} (x, y)\]
+    So $g \in \Stab_G(x)$ and once we can choose $y$ arbitrarily, $x' \mapsto y$ is transitive. 
+
+    Suppose that second definition holds. 
+    For $x \neq x'$ and $y \neq y'$, we can find $y = g(x)$. 
+    Suppose that $g(x') = z$. Then we can find $h \in \Stab_G(x)$ such that 
+    $h(z) = y'$. Let $k = g * h$. Then, $g * h(x) = g(x) = y$, and $g * h(x') = g(z) = y'$. 
+\end{proof}
+
+\hrulefill
+
+\begin{thm}
+    $\PSL_n(\BF)$ is simple $\forall n \geq 2$, $\forall \BF$ a field except for $\PSL_2(\BF_2) \cong S_3, \PSL_2(\BF_3) \cong A_4$. 
+\end{thm}
+
+Our ultimate goal is prove this. To prove this, we'll construct bit story from now on. 
+Actually the proof is strongly based on following criterion: 
+
+\begin{thm}{(Iwasawa's Criterion)}
+    $G$ acts doubly transitive on $X$. 
+    \begin{enumerate}
+        \item There exists some $H_x = \Stab_G(x)$ such that it contains $U \normal H_x$, $U$ is abelian, $\langle gUg^{-1} \mid g \in G \rangle = G$ 
+        \item $G$ is perfect, i.e., $[G, G] = G$
+    \end{enumerate}
+    Then, for the kernel $K$ of $G$-action on $X$, $G/K$ is simple. 
+\end{thm}
+
+Note that we already shown that $\SL_n(\BF)$ acts doubly transitive on 1-dim vertor spaces of $\BF^n$ 
+and kernel of such action is $Z(\SL_n(\BF))$. So, Iwasawa's criterion gives us that 
+if $\SL_n(\BF)$ holds (1) and (2), then $\PSL_n(\BF) = \SL_n(\BF)/Z(\SL_n(\BF))$ is simple. (During the proof, exception cases occurs.)
+So first we prove following lemmata. 
+
+\hrulefill
+
+\begin{lem}
+    $G$ acts doubly transitively on $X$. For all $x \in X$, $\Stab_G(x)$ is the maximal subgroup of $G$. 
+    i.e., no $K < G$ such that $\Stab_G(x) < K < G$. 
+\end{lem}
+
+\begin{proof}
+    Choose arbitrary $x \in X$ and $H_x = \Stab_G(x)$. 
+    We first claim that 
+    \[G = H_x \cup H_x g H_x \text{ where $g \notin H_x$ and $H_x g H_x = \{ hgh' \mid h, h' \in H_x\}$}\]
+    Let $g, g' \notin H_x$. Then, $g(x) \neq x$ and $g'(x) \neq x$. So using doubly transitivity, 
+    \[(x, g(x)) \xmapsto{h} (x, g'(x))\]
+    Since $h(x) = x$, $h \in H_x$ and so $(h * g)(x) = g'(x)$. 
+    However here, $(g')^{-1}hg (x) = x$ implies that $(g')^{-1} h g \in H_x$. 
+    So, $g' = hgh'$ for $h, h' \in H_x$. Since the choice was arbitrary, $G = H_x \cup H_xgH_x$. 
+    Then suppose that $H_x \leq K \leq G$. For $k \in K \setminus H_x$, 
+    we can newly define that $G = H_x \cup H_x k H_x$. However, since $H_x \leq K$ and $k \in K$, 
+    it implies that $G \leq K$ so $K = G$. Since $H_x$ is maximal. 
+\end{proof}
+
+\begin{lem}
+    Suppose that $G$ acts on $X$ doubly transitively, then $\forall N \normal G$, $N$ acts on $X$ either trivially or transitively. 
+\end{lem}
+
+\begin{proof}
+    Suppose that $N \normal G$ acts on $X$ non-trivially. i.e., $n(x) = x'$ where $x \neq x'$. 
+    Then for $(x, n(x))$ and any $y \neq y'$ in $X$, we can find $g \in G$ such that 
+    $g(x) = y$, $g(n(x)) = y'$. 
+    Hence, 
+    \[(g n g^{-1})(y) = y'\]
+    Since $y, y' \in X$ are chosen arbitrarily and $gng^{-1} \in N$, we can say that $N$ acts on $X$ transitively. 
+\end{proof}
+
+\hrulefill
+
+Now we're ready to prove Iwasawa's Criterion on doubly transitive $G$-action on $X$. 
+
+\begin{proof}
+    According to 4th Isomorphism theorem, the lattice structure of $G/K$ is 
+    isomorphic to upper-structure of $K$ in $G$-lattice. 
+    So, showing simiplicity of $G/K$ is equivalent to if $K \leq N \normal G$ then $N = K$ or $N = G$. 
+    Suppose that 
+    \[K \leq N \normal G\]
+    And choose stabilizer of $x$, $H$ from assumption (1), i.e., $U \normal H$ and $U$ is abelian, $gUg^{-1}$ generates $G$. 
+    Since $N \normal G$, we can know 
+    \[H \leq NH \leq G\]
+    By lemma 1.4., $H$ is the maximal subgroup. So, either $NH = H$ or $NH = G$. 
+    If $NH = H$, it implies that $N \leq H$ so $N$ is normal subgroup such that stabilize $x$. 
+    By lemma 1.5., this implies that $N$ acts on $X$ trivially. 
+    Hence, $N \leq K$ and so $N = K$ in this case. 
+
+    If $NH = G$, we claim that $NU \normal NH = G$. 
+    \[(nh)(n_1u)(nh)^{-1} = n_2(huh^{-1})n^{-1} = n_2 u_2 n^{-1}(u_2^{-1} u_2) = n_3 u_2 \in NU \implies NU \normal NH = G\]
+    However, 
+    \[g U g^{-1} \leq g NU g^{-1} = NU \implies NU = G\]
+    By 2nd Isomorphism theorem, 
+    \[G/N \cong U/(N \cap U)\]
+    However $U/(N \cap U)$ is abelian since $U$ is abelian. 
+    By commutator subgroup theorem, $G/N$ is abelian implies that $[G, G] = G \leq N$, so $N = G$.
+\end{proof}
+
+\hrulefill
+
+Now what we want to show is actually $\PSL_n(\BF)$ is simple. 
+To show that, it is enough to show that $\SL_n(\BF)$ satisfy Iwasawa's condition with 
+kernel $Z(\SL_n(\BF))$. 
+We already show that $\SL_n(\BF)$ acts on 1-dim vertor space of $\BF^n$ and 
+it is doubly transitive action, and the kernel is $Z(\SL_n(\BF))$. 
+
+\begin{lem}
+    $\SL_n(\BF)$ satisfies Iwasawa's 1st condition. 
+\end{lem}
+
+\begin{proof}
+    Choose $H$ be the stabilizer of 1-dim vector space generated by standard basis $\hat{e_1}$. 
+    Then the block matrix representation of $H$ will be 
+    \[H = \left\{\begin{pmatrix}
+    a & * \\
+    0 & [h]
+    \end{pmatrix} \mid [h] \in \GL_n(\BF), a = (\det h)^{-1}\right\}\]
+    We can find group homomorphism defined by 
+    \[\varphi: \begin{pmatrix}
+        a & * \\ 
+        0 & [h]
+    \end{pmatrix} \mapsto [h] \in \GL_n(\BF)\]
+    The kernel of this homomorphism $\varphi: H \rightarrow \GL_n(\BF)$ is easily given by 
+    \[\ker \varphi = \begin{pmatrix}
+        1 & \vec{a} \\ 
+        0 & I_n
+    \end{pmatrix} 
+    \text{ where $\vec{a} = (a_1, \cdots, a_{n-1})$}\]
+    Hence, 
+    \[U = \ker \varphi \cong \BF^{n-1} \implies U \normal H\]
+    And via easy computation, $U$ is abelian. To argue that such $H$ and $U$ holds Iwasawa's 1st condition, 
+    remaining to show is that $gUg^{-1}$ generated $\SL_n(\BF)$. 
+    To show that, we'll first show that any unipotent elementary matrices($I_n + \lambda E_{ij}$) conjugates to 
+    $I_n + E_{12} \in U$. Secondly, we'll show that unipotent elementary matrices generates $\SL_n(\BF)$. (So, $gUg^{-1}$ contains all unipotent matrices and it generated $\SL_n(\BF)$.)
+    Conjugate is peration basis changing. So, if we chance the basis for $T = I_n + \lambda E_{ij}$ 
+    from $\{e_i\}$ to $\{f_i\}$ such that $f_1 = \lambda e_i$, $f_2 = e_j$ and $f_3, \cdots, f_n$ is permutation of remaining things. 
+    Then, 
+    \[T: f_1 \mapsto T(\lambda e_i) = \lambda e_i = f_1\]
+    and 
+    \[T: f_2 \mapsto T(e_j) = \lambda e_i + e_j = f_1 + f_2\]
+    and for remaining things, $T: f_k \mapsto f_k$. 
+    So the matrix representation of $T$ in $\{f_i\}$ basis will be 
+    \[T_{f} = \begin{pmatrix}
+        1 & 1 & 0 & \cdots \\ 
+        0 & 1 & 0 & \cdots \\
+        \vdots & & I_n  
+    \end{pmatrix} = I_n + E_{12}\]
+    So, we can obtain 
+    \[(I_n + \lambda E_{ij}) = g(I_n + E_{12}) g^{-1}\]
+    for some $g \in \GL_n(\BF)$. To scaling $g$ into $\SL_n(\BF)$, 
+    we just modify the basis $f_n = (\det g)^{-1} e_m$. 
+    It does not effect the result, but now $g \in \SL_n(\BF)$.  
+    
+    Now we need to show that set of unipotent elementary matrices generates $\SL_n(\BF)$. 
+    
+\end{proof}
+
+\begin{lem}
+    $\SL_n(\BF)$ satisfies Iwasawa's 2nd condition. 
+\end{lem}
+
+\begin{proof}
+    Sufficient to show that all unipotent elementary matrices are commutator. 
+    Since commutators are conjugated to each other, sufficient to show that 
+    $I_n + E_{12}$ is a commutator. Do $[I_n + E_{13}, I_n + E_{32}]$. 
+    Here exception occurs: for $n = 2$, 
+    \[\begin{pmatrix}
+        a & 0 \\
+        0 & a^{-1}
+    \end{pmatrix} \begin{pmatrix}
+        1 & b \\ 
+        0 & 1
+    \end{pmatrix} \begin{pmatrix}
+        a & 0 \\
+        0 & a^{-1}
+    \end{pmatrix}^{-1} \begin{pmatrix}
+        1 & b \\
+        0 & 1
+    \end{pmatrix}^{-1} 
+    = 
+    \begin{pmatrix}
+        1 & b(a^2 - 1) \\ 
+        0 & 1
+    \end{pmatrix}\]
+    So, $\BF_2$, $\BF_3$ is impossible. 
+\end{proof}
+
+Hence, $\PSL_n(\BF) = \SL_n(\BF)/Z(\SL_n(\BF))$ is simple except for $\PSL_2(\BF_2) \cong S_3$ and $\PSL_2(\BF_3) \cong A_4$.  
+
+\end{document}
